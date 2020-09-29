@@ -5,48 +5,25 @@ print("|    #     #    # #    | #    | ##         | \     / |    # #    | #    |
 print("|    #*****#   #   #   |  #   | ##  ###### |  \   /  |   #   #   |  #   | |")
 print("|    #     #  #*****#  |   #  | ##      ## |   \_/   |  #*****#  |   #  | |")
 print("|    #     # #       # |    # | ########## |         | #       # |    # | |")
-print("|*************************************************************************|")
-print("|*************************************************************************|")
-print("|*************************************************************************|")
-print("|*********************________________************************************|")
-print("|                     |              |                                    |")
-print("|                     |              |                                    |")
-print("|                     |              |                                    |")
-print("|                                    |                                    |")
-print("|                                    |                                    |")
-print("|                                    |                                    |")
-print("|                                    |                                    |")
-print("|                                    |                                    |")
-print("|                                    |                                    |")
-print("|                                    |                                    |")
-print("|                      ______________|                                    |")
-print("|*************************************************************************|")
-print("|*************************************************************************|")
-print("|*************************************************************************|")
-print("|*************************************************************************|")
-print("|*************************************************************************|")
-print("|*************************************************************************|")
-print("|*************************************************************************|")
-print("|*************************************************************************|")
 print("|*************************************************************************|\n")
 
 secret_word = []
 
 player_name = input("Enter your name: ")
 
-print(f"Hello, {player_name} let's play Hangman!")
+print(f"Hello, {player_name} let's play Hangman")
 time.sleep(1)
 
 print("Here are the instructions for this game:")
 time.sleep(1)
 
-print("1. You'll can guess a letter or if you confident you solve the puzzle.")
+print("1. You'll guess a letter, or if you are confident you solve the puzzle.")
 time.sleep(1)
 
-print("2. After guessing a letter don't forget to hit the enter key.")
+print("2. After guessing a letter, don't forget to hit the enter key.")
 time.sleep(2)
 
-print(f"Simple, right? Anyway let's play the game {player_name}")
+print(f"Simple, right? Anyway, let's play the game {player_name}")
 time.sleep(1)
 
 wordBank = open("Hangman_Word_Bank.txt", "rt")
