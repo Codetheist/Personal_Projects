@@ -1,4 +1,5 @@
-import random, time
+import random
+import time
 
 print("|*************************************************************************|")
 print("|    #     #     #     |#     | ########## |\       /|     #     |#     | |")
@@ -7,8 +8,6 @@ print("|    #*****#   #   #   |  #   | ##  ###### |  \   /  |   #   #   |  #   |
 print("|    #     #  #*****#  |   #  | ##      ## |   \_/   |  #*****#  |   #  | |")
 print("|    #     # #       # |    # | ########## |         | #       # |    # | |")
 print("|*************************************************************************|\n")
-
-secret_word = []
 
 player_name = input("Enter your name: ")
 
@@ -26,6 +25,8 @@ time.sleep(2)
 
 print(f"Simple, right? Anyway, let's play the game {player_name}")
 time.sleep(1)
+
+secret_word = []
 
 wordBank = open("Hangman_Word_Bank.txt", "rt")
 for i in wordBank:
