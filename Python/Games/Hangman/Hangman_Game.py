@@ -1,4 +1,5 @@
 import random, time
+
 print("|*************************************************************************|")
 print("|    #     #     #     |#     | ########## |\       /|     #     |#     | |")
 print("|    #     #    # #    | #    | ##         | \     / |    # #    | #    | |")
@@ -17,7 +18,7 @@ time.sleep(1)
 print("Here are the instructions for this game:")
 time.sleep(1)
 
-print("1. You'll guess a letter, or if you are confident you solve the puzzle.")
+print("1. You'll guess a letter.")
 time.sleep(1)
 
 print("2. After guessing a letter, don't forget to hit the enter key.")
@@ -30,33 +31,38 @@ wordBank = open("Hangman_Word_Bank.txt", "rt")
 for i in wordBank:
     game_words = str(i)
     game_words = game_words.rstrip("\n")
-    if(len(game_words)>2):
+    if len(game_words) > 2:
         secret_word.append(game_words)
 wordBank.close()
+
 
 def picking_words(secret_word):
     ran_word = random.sample(secret_word, 1)
     ran_word = str(ran_word[0]).upper()
-    return(ran_word)
+    return ran_word
+
 
 def starting_game(ran_word):
     start = ""
     for i in range(len(ran_word)):
         start += "_"
-    return(start)
+    return start
+
 
 def player_input(player_guesses, game_words):
     for i in player_guesses:
-        print(i,end="")
+        print(i, end=" ")
     play_guess = input("Enter a letter: ")
     play_guess = str(play_guess).upper()
-    if (len(play_guess)>1 or play_guess == ""):
-        return(player_guesses)
-    else:
-        result = matching_words(play_guess,player_guesses,game_words)
-        return(result)
 
-def matching_words(play_guess,player_guesses,game_words):
+    if len(play_guess) > 1 or play_guess == "":
+        return player_guesses
+    else:
+        result = matching_words(play_guess, player_guesses, game_words)
+        return result
+
+
+def matching_words(play_guess, player_guesses, game_words):
     player_guesses_list = list(player_guesses)
     for i in range(len(game_words)):
         if play_guess == game_words[i]:
@@ -64,11 +70,13 @@ def matching_words(play_guess,player_guesses,game_words):
     wrds = ""
     for x in player_guesses_list:
         wrds += x
-    return(wrds)
+    return wrds
+
 
 def game_play(player_guesses, game_words):
     guess_attempts = 0
-    max_guess = 5
+    # max_guess = 8
+    max_guess = len(game_words) + 2
 
     while True:
         if guess_attempts >= max_guess:
@@ -92,12 +100,32 @@ def game_play(player_guesses, game_words):
             player_guesses = answer
             print("")
 
-        if(answer.count("_") == 0):
+        if answer.count("_") == 0:
             print("")
             print("Congrats. You won!")
             print("")
             print("Word is: " + game_words)
             break
+
+    print("")
+    print("Do you want to play again? ")
+    print("")
+
+    play_again = input("Enter Y for Yes or N for No: ")
+
+    while True:
+        if play_again == "Y" or play_again == "y":
+            game_play(player_guesses, game_words)
+            continue
+        elif play_again == "N" or play_again == "n":
+            print("")
+            print(f"Thanks for playing {player_name}!")
+            exit()
+        elif play_again != "Y" or play_again != "y" or play_again != "N" or play_again != "n":
+            print("")
+            print(f"{player_name}, Please select either Y for Yes or N for No.")
+            play_again = input("Enter Y for Yes or N for No: ")
+
 
 game_words = picking_words(secret_word)
 player_guesses = starting_game(game_words)
