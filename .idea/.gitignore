@@ -2,7 +2,7 @@
 /shelf/
 /workspace.xml
 # Datasource local storage ignored files
-/../../../../../../../:\GitHub\Personal_Programming_Projects\Python\Games\Hangman\.idea/dataSources/
+/../../../../:\GitHub\Personal_Programming_Projects\.idea/dataSources/
 /dataSources.local.xml
 # Editor-based HTTP Client requests
 /httpRequests/
