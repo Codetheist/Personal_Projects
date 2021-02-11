@@ -4,7 +4,13 @@
 # Company: Codetheist, LLC
 # Email: codetheist@codetheist.com
 
-# switch(country):
+country = input("Enter country or currency abbreviation: ")
+print("i.e. Unite State or USD or US")
+
+def switch_country(country):
+    country_list = {
+
+    }
 
 
 def tax_calculation():
