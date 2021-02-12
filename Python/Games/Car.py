@@ -1,24 +1,24 @@
-#Create a command list if user enter help (either lowercase or uppercase)
-#display:
-#start - to start the car
-#stop - to stop the car
-#quit - to exit
+# Create a command list if user enter help (either lowercase or uppercase)
+# display:
+# start - to start the car
+# stop - to stop the car
+# quit - to exit
 
-#if they enter anything other than help
-#display:
-#invalid command.
+# if they enter anything other than help
+# display:
+# invalid command.
 
-#if the enter start
-#start:
-#car started.... Ready to go!
+# if the enter start
+# start:
+# car started.... Ready to go!
 
-#if the enter stop
-#stop:
-#car stopped.
+# if the enter stop
+# stop:
+# car stopped.
 
-#if the enter quit
-#quit:
-#thanks for playing
+# if the enter quit
+# quit:
+# thanks for playing
 
 user_command = ""
 
@@ -43,7 +43,7 @@ while True:
         stop - to stop the car\n
         quit - to exit\n
         """)
-    elif: user_command == "quit":
+    elif user_command == "quit":
         break
     else:
         print("Invalid command.")
