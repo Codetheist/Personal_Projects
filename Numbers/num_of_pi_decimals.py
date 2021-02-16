@@ -16,7 +16,7 @@ def pi_to_the_nth_digit():
 
     # pi_calc =
 
-    print(f"PI to the {num_digits} digit is amount: %.{num_digits}f")
+    print(f"PI to the {num_digits}th digit is amount: %.{num_digits}f")
 
 
 pi_to_the_nth_digit()
