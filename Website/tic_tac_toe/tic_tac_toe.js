@@ -1,8 +1,12 @@
 const statusGame = document.querySelector("status");
 
-const winMessage = () => { "Congratulations, player "; {currentPlayer} " win!"; }
+let isGameActive = true;
+let player = "X";
+let gameBoard = ["", "", "", "", "", "", "", "", ""];
+
+const winMessage = () => { "Congratulations, player "; { currentPlayer } " win!"; }
 const drawMessage = () => { "Game is a draw!"; }
-const currentPlayerTurn = () => { "Player "; {currentPlayer} " turn!"; }
+const currentPlayerTurn = () => { "Player "; { currentPlayer } " turn!"; }
 
 statusGame.innerHTML = currentPlayerTurn();
 
@@ -17,68 +21,72 @@ const winCondition = [
     [2, 4, 6]
 ];
 
-function cellPlayed(/*cellClicked,*/ cellNumber) {
-    // Update the game board
+function cellPlayed(cellClicked, cellNumber) {
     gameBoard[cellNumber] = player;
-    // Update the cell
-    document.getElementById("cell" + cellNumber).innerHTML = player;
-    // Check for a winner
-    checkForWinner();
-    // Switch players
-    if (player == "X") {
+    cellClicked.innerHTML = player;
+}
+
+function changePlayer() {
+    if (player === "X") {
         player = "O";
     } else {
         player = "X";
     }
-    // Update the status
+
     statusGame.innerHTML = currentPlayerTurn();
 }
 
 function gameResult() {
-    // Check for a winner
-    if (gameOver == true) {
-        // Update the status
-        statusGame.innerHTML = winMessage();
-    } else {
-        // Check for a draw
-        if (gameBoard.includes("") == false) {
-            // Update the status
-            statusGame.innerHTML = drawMessage();
+    let isRoundOver = false;
+    for (let i = 0; i < winCondition.length; i++) {
+        const winCondition = winCondition[i];
+        let a = gameBoard[winCondition[0]];
+        let b = gameBoard[winCondition[1]];
+        let c = gameBoard[winCondition[2]];
+        if (a === "" || b === "" || c === "") {
+            continue;
         }
+        if (a === b && b === c) {
+            isRoundOver = true;
+            break;
+        }
+
+        if (isRoundOver) {
+            statusGame.innerHTML = winMessage();
+            isGameActive = false;
+            return;
+        }
+
+        let isRoundDraw = !gameBoard.includes("");
+        if (isRoundDraw) {
+            statusGame.innerHTML = drawMessage();
+            isGameActive = false;
+            return;
+        }
+
+        changePlayer();
     }
 }
 
-function cellClicked(cellEvent) {
-    // Get the cell number
-    var cellNumber = cellEvent.target.id.replace("cell", "");
-    // Check if the cell is empty
-    if (gameBoard[cellNumber] == "") {
-        // Play the game
-        cellPlayed(cellEvent, cellNumber);
-        // Check for a winner
-        checkForWinner();
-        // Check for a draw
-        gameResult();
+function cellClicked(cellClicked) {
+    const clickedCell = cellClicked.target;
+    const cellNumber = parseInt(clickedCell.getAtrribute("data-cell-index"));
+
+    if (gameBoard[cellNumber] !== "" || !isGameActive) {
+        return;
     }
+
+    cellPlayed(clickedCell, cellNumber);
+    gameResult();
 }
 
 function resetGame() {
-    // Reset the game board
-    for (var i = 0; i < 9; i++) {
-        document.getElementById("cell" + i).innerHTML = "";
-    }
-    // Reset the game variables
+    isGameActive = true;
     player = "X";
-    gameOver = false;
     gameBoard = ["", "", "", "", "", "", "", "", ""];
-}
-
-function checkForWinner() {
-    // Check for a winner
-    if (gameBoard[0] == player && gameBoard[1] == player && gameBoard[2] == player) {
-        gameOver = true;
-    }
+    statusGame.innerHTML = currentPlayerTurn();
+    document.querySelectorAll(".cell").forEach(cell => cell.innerHTML = "");
 }
 
 document.querySelectorAll(".cell").forEach(cell => cell.addEventListener("click", cellClicked));
-document.querySelector("#reset").addEventListener("click", resetGame);
+document.querySelector("reset-game").addEventListener("click", resetGame);
