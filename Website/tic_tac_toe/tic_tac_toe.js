@@ -1,16 +1,18 @@
-const statusGame = document.querySelector("status");
+const gameState = document.querySelector('.status');
 
 let isGameActive = true;
-let player = "X";
+let currentPlayer = 'X';
 let gameBoard = ["", "", "", "", "", "", "", "", ""];
 
-const winMessage = () => { "Congratulations, player "; { currentPlayer } " win!"; }
-const drawMessage = () => { "Game is a draw!"; }
-const currentPlayerTurn = () => { "Player "; { currentPlayer } " turn!"; }
+const winMessage = () => {"Player " + currentPlayer + " wins!"};
+const drawMessage = () => {"Game is a draw!"};
+const playerTurn = () => {
+    return "It's " + currentPlayer + " turn";
+}
 
-statusGame.innerHTML = currentPlayerTurn();
+gameState.innerHTML = playerTurn();
 
-const winCondition = [
+const winConditions = [
     [0, 1, 2],
     [3, 4, 5],
     [6, 7, 8],
@@ -21,72 +23,81 @@ const winCondition = [
     [2, 4, 6]
 ];
 
-function cellPlayed(cellClicked, cellNumber) {
-    gameBoard[cellNumber] = player;
-    cellClicked.innerHTML = player;
+function playGame(cellClick, cellNumber) {
+    gameBoard[cellNumber] = currentPlayer;
+    cellClick.innerHTML = currentPlayer;
 }
+
 
 function changePlayer() {
-    if (player === "X") {
-        player = "O";
+    if (currentPlayer === 'X') {
+        currentPlayer = 'O';
     } else {
-        player = "X";
+        currentPlayer = 'X';
     }
 
-    statusGame.innerHTML = currentPlayerTurn();
+    gameState.innerHTML = playerTurn();
 }
+
 
 function gameResult() {
     let isRoundOver = false;
-    for (let i = 0; i < winCondition.length; i++) {
-        const winCondition = winCondition[i];
-        let a = gameBoard[winCondition[0]];
-        let b = gameBoard[winCondition[1]];
-        let c = gameBoard[winCondition[2]];
-        if (a === "" || b === "" || c === "") {
+
+    for (let i = 0; i <= 7; i++) {
+        const conditionToWin = winConditions[i];
+        let conditionA = gameBoard[conditionToWin[0]];
+        let conditionB = gameBoard[conditionToWin[1]];
+        let conditionC = gameBoard[conditionToWin[2]];
+
+        if (conditionA === '' || conditionB === '' || conditionC === '') {
             continue;
         }
-        if (a === b && b === c) {
+
+        if (conditionA === conditionB && conditionB === conditionC) {
             isRoundOver = true;
             break;
         }
-
-        if (isRoundOver) {
-            statusGame.innerHTML = winMessage();
-            isGameActive = false;
-            return;
-        }
-
-        let isRoundDraw = !gameBoard.includes("");
-        if (isRoundDraw) {
-            statusGame.innerHTML = drawMessage();
-            isGameActive = false;
-            return;
-        }
-
-        changePlayer();
     }
-}
 
-function cellClicked(cellClicked) {
-    const clickedCell = cellClicked.target;
-    const cellNumber = parseInt(clickedCell.getAtrribute("data-cell-index"));
-
-    if (gameBoard[cellNumber] !== "" || !isGameActive) {
+    if (isRoundOver) {
+        gameState.innerHTML = winMessage();
+        isGameActive = false;
         return;
     }
 
-    cellPlayed(clickedCell, cellNumber);
+    let isRoundADraw = !gameBoard.includes("");
+    if (isRoundADraw) {
+        gameState.innerHTML = drawMessage();
+        isGameActive = false;
+        return;
+    }
+
+    changePlayer();
+}
+
+
+function clickCell(cellClickedEvent) {
+    const cellClicked = cellClickedEvent.target;
+    const cellNumber = parseInt(cellClicked.getAttribute('data-cell-index'));
+
+    if (gameBoard[cellNumber] !== '' || !isGameActive) {
+        return;
+    }
+
+    playGame(cellClicked, cellNumber);
     gameResult();
 }
 
+
 function resetGame() {
     isGameActive = true;
-    player = "X";
+    currentPlayer = 'X';
     gameBoard = ["", "", "", "", "", "", "", "", ""];
-    statusGame.innerHTML = currentPlayerTurn();
-    document.querySelectorAll(".cell").forEach(cell => cell.innerHTML = "");
+    
+    gameState.innerHTML = playerTurn();
+    document.querySelectorAll('#cell').forEach(cell => {cell.innerHTML = ''});
 }
 
-document.querySelectorAll(".cell").forEach(cell => cell.addEventListener("click", cellClicked));
-document.querySelector("reset-game").addEventListener("click", resetGame);
+
+document.querySelectorAll("#cell").forEach(cell => (cell.addEventListener('click', clickCell)));
+document.querySelector('.reset').addEventListener('click', resetGame);
