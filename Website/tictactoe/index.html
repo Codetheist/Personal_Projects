@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="tic_tac_toe.css">
+<link rel="stylesheet" href="styles.css">
 
 <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
 <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
@@ -31,9 +31,12 @@
             <div data-cell-index id="cell"></div>
             <div data-cell-index id="cell"></div>
             <div data-cell-index id="cell"></div>
+            <div data-cell-index id="cell"></div>
         </div>
 
         <h2 id="status"></h2>
+        <h2 id="winner"></h2>
+        <h2 id="tie"></h2>
         
         <button class="w3-button w3-theme-d2 w3-margin-top" onclick="resetGame()" id="reset">Reset Game</button>
         <audio class="w3-display-bottommiddle" controls loop autoplay>
@@ -42,5 +45,5 @@
     </section>
 </body>
 
-<script src="tic_tac_toe.js"></script>
+<script src="script.js"></script>
 </html>

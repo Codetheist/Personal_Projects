@@ -3,8 +3,33 @@
     grid-template-columns: repeat(3, auto);
     width: 306px;
     margin: 10px auto;
-    background-color: #11213a;
-    color: #04c0b2;
+    background-color: black;
+    color: white;
+}
+
+#board > div {
+    width: 100px;
+    height: 100px;
+    border: 1px solid black;
+    font-size: 60px;
+    text-align: center;
+    line-height: 100px;
+    cursor: pointer;
+}
+
+#board > div:hover {
+    background-color: lightgray;
+    color: #11213a;
+}
+
+#board > div.winner {
+    background-color: #04c0b2;
+    color: black;
+}
+
+#board > div.draw {
+    background-color: #04c0b2;
+    color: black;
 }
 
 #cell {
@@ -18,8 +43,63 @@
     font-size: 60px;
 }
 
-.status {
+#cell:hover {
+    background-color: #ecd7ba;
+    color: #11213a;
+}
+
+#cell.winner {
+    background-color: #04c0b2;
+    color: black;
+}
+
+#cell.draw {
+    background-color: #04c0b2;
+    color: black;
+}
+
+#cell.disabled {
+    background-color: #ecd7ba;
+    color: #11213a;
+}
+
+#cell.disabled:hover {
+    background-color: #ecd7ba;
+    color: #11213a;
+}
+
+#cell.disabled.winner {
+    background-color: #04c0b2;
+    color: black;
+}
+
+#cell.disabled.draw {
+    background-color: #04c0b2;
+    color: black;
+}
+
+#status {
     font-size: 50px;
     margin: 20px auto;
     color: #d7a62f;
+}
+
+#status.winner {
+    color: #04c0b2;
+}
+
+#status.draw {
+    color: #04c0b2;
+}
+
+#status.disabled {
+    color: #ecd7ba;
+}
+
+#status.disabled.winner {
+    color: #04c0b2;
+}
+
+#status.disabled.draw {
+    color: #04c0b2;
 }
