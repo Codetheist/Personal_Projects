@@ -18,7 +18,7 @@
     font-size: 60px;
 }
 
-#status {
+.status {
     font-size: 50px;
     margin: 20px auto;
     color: #d7a62f;
