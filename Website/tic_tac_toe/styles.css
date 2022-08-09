@@ -1,4 +1,4 @@
-#gamePlay {
+#board {
     display: grid;
     grid-template-columns: repeat(3, auto);
     width: 306px;
