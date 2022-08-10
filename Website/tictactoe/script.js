@@ -1,18 +1,11 @@
-const GAME_STATUS = document.querySelector("#status");
+const GAME_STATE = document.querySelector('#status');
 
 let isGameActive = true;
-let player = "X";
-let computer = "O";
-
+let player = 'X';
+let computer = 'O';
 let gameBoard = ["", "", "", "", "", "", "", "", ""];
 
-/*const playerTurn = () => {
-    return "It's " + player + " turn";
-}
-
-GAME_STATUS.innerHTML = playerTurn();*/
-
-const WINNING_COMBINATION = [
+const WIN_CONDITIONS = [
     [0, 1, 2],
     [3, 4, 5],
     [6, 7, 8],
@@ -23,96 +16,174 @@ const WINNING_COMBINATION = [
     [2, 4, 6]
 ];
 
-// Initialize game
-function initializeGame() {
-    gameBoard = ["", "", "", "", "", "", "", "", ""];
-    isGameActive = true;
-    player = "X";
-    computer = "O";
-    GAME_STATUS.innerHTML = "It's X turn";
-}
-
-// Update game board
-function updateGameBoard() {
-    let gameBoardHTML = "";
+// Initialize the game
+function init() {
     for (let i = 0; i < gameBoard.length; i++) {
-        gameBoardHTML += "<div class='cell' data-cell-index='" + i + "'>" + gameBoard[i] + "</div>";
+        gameBoard[i] = '';
     }
-    document.querySelector("#board").innerHTML = gameBoardHTML;
+
+    isGameActive = true;
+    player = 'X';
+    computer = 'O';
+    GAME_STATE.innerHTML = playerTurn();
+    document.getElementById('board').addEventListener('click', clickCell);
+
+    changePlayer();
+    computerTurn();
+    gameLoop();
+    gameLogic();
+    gameResult();
 }
 
-// Check if game is over
-function isGameOver(gameBoard) {
-    for (let i = 0; i < WINNING_COMBINATION.length; i++) {
-        let [a, b, c] = WINNING_COMBINATION[i];
-        if (gameBoard[a] === gameBoard[b] && gameBoard[b] === gameBoard[c] && gameBoard[a] !== "") {
+// To play the game
+function playGame(CELL_CLICKED, CELL_NUMBER) {
+    if (gameBoard[CELL_NUMBER] === '') {
+        gameBoard[CELL_NUMBER] = player;
+        document.getElementById(CELL_NUMBER).innerHTML = player;
+        changePlayer();
+        gameLoop();
+    }
+
+    if (checkForLoss()) {
+        GAME_STATE.innerHTML = 'You lost!';
+        isGameActive = false;
+    }
+
+    if (checkForTie()) {
+        GAME_STATE.innerHTML = 'Tie!';
+        isGameActive = false;
+    }
+
+    if (checkForWinner()) {
+        GAME_STATE.innerHTML = 'You won!';
+        isGameActive = false;
+    }
+}
+
+
+// Change the player turn
+function changePlayer() {
+    if (player === 'X') {
+        player = 'O';
+        computer = 'X';
+    } else {
+        player = 'X';
+        computer = 'O';
+    }
+}
+
+// Computer turn
+function computerTurn() {
+    let randomNumber = Math.floor(Math.random() * 9);
+    if (gameBoard[randomNumber] === '') {
+        gameBoard[randomNumber] = computer;
+        document.getElementById("randomNumber").innerHTML = computer;
+    } else {
+        computerTurn();
+    }
+}
+
+// Check for a winner
+function checkForWinner() {
+    for (let i = 0; i < WIN_CONDITIONS.length; i++) {
+        if (gameBoard[WIN_CONDITIONS[i][0]] === player && gameBoard[WIN_CONDITIONS[i][1]] === player && gameBoard[WIN_CONDITIONS[i][2]] === player) {
             return true;
         }
     }
     return false;
 }
 
-// Check if game is draw
-function isGameDraw(gameBoard) {
+// Check for a tie
+function checkForTie() {
     for (let i = 0; i < gameBoard.length; i++) {
-        if (gameBoard[i] === "") {
+        if (gameBoard[i] === '') {
             return false;
         }
     }
     return true;
 }
 
-// Computer turn
-function computerTurn() {
-    let randomNumber = Math.floor(Math.random() * 9);
-    while (gameBoard[randomNumber] !== "") {
-        randomNumber = Math.floor(Math.random() * 9);
+// Check for a loss
+function checkForLoss() {
+    for (let i = 0; i < WIN_CONDITIONS.length; i++) {
+        if (gameBoard[WIN_CONDITIONS[i][0]] === computer && gameBoard[WIN_CONDITIONS[i][1]] === computer && gameBoard[WIN_CONDITIONS[i][2]] === computer) {
+            return true;
+        }
     }
-    gameBoard[randomNumber] = computer;
-    updateGameBoard();
+    return false;
 }
 
+
 // Player turn
-function playerTurn(cellClickedEvent) {
-    let cellClicked = cellClickedEvent.target;
-    let cellClickedIndex = parseInt(cellClicked.getAttribute("data-cell-index"));
-    if (gameBoard[cellClickedIndex] === "") {
-        gameBoard[cellClickedIndex] = player;
-        updateGameBoard();
-        if (isGameOver(gameBoard)) {
-            GAME_STATUS.innerHTML = "Game Over";
-            isGameActive = false;
-        } else if (isGameDraw(gameBoard)) {
-            GAME_STATUS.innerHTML = "Game Draw";
-            isGameActive = false;
-        } else {
-            player = "X";
-            computer = "O";
-            GAME_STATUS.innerHTML = "It's O turn";
+function playerTurn() {
+    if (isGameActive) {
+        GAME_STATE.innerHTML = 'Player Turn';
+    } else {
+        GAME_STATE.innerHTML = 'Game Over';
+    }
+}
+
+
+// Game logic
+function gameLogic() {
+    if (checkForWinner()) {
+        GAME_STATE.innerHTML = 'Player Wins';
+        isGameActive = false;
+    } else if (checkForTie()) {
+        GAME_STATE.innerHTML = 'Tie Game';
+        isGameActive = false;
+    }
+}
+
+// Game result
+function gameResult() {
+    let isRoundOver = false;
+
+    for (let i = 0; i <= 7; i++) {
+        const CONDITION_TO_WIN = WIN_CONDITIONS[i];
+        let conditionA = gameBoard[CONDITION_TO_WIN[0]];
+        let conditionB = gameBoard[CONDITION_TO_WIN[1]];
+        let conditionC = gameBoard[CONDITION_TO_WIN[2]];
+
+        if (conditionA === '' || conditionB === '' || conditionC === '') {
+            continue;
+        }
+
+        if (conditionA === conditionB && conditionB === conditionC) {
+            isRoundOver = true;
+            break;
         }
     }
 }
 
-
-// Reset game
-function resetGame() {
-    initializeGame();
-}
-
-// Cell click event
-function clickCell(cellClickedEvent) {
-    const cellClicked = cellClickedEvent.target;
-    const cellNumber = parseInt(cellClicked.getAttribute('data-cell-index'));
-
-    if (gameBoard[cellNumber] !== '' || !isGameActive) {
-        return;
-    }
-}
-
+// Event listeners
 document.querySelectorAll("#cell").forEach(cell => (cell.addEventListener('click', clickCell)));
 document.querySelector('#reset').addEventListener('click', resetGame);
 
-// Refresh page
-window.onload = function() {
-    initializeGame();
+
+// Game loop
+function gameLoop() {
+    playerTurn();
+    gameLogic();
 }
+// Cell click event
+function clickCell(cellClickedEvent) {
+    const CELL_CLICKED = cellClickedEvent.target;
+    const CELL_NUMBER = parseInt(CELL_CLICKED.getAttribute('data-cell-index'));
+
+    if (gameBoard[CELL_NUMBER] !== '' || !isGameActive) {
+        return;
+    }
+
+    playGame(CELL_CLICKED, CELL_NUMBER);
+
+
+}
+
+// Reset the game
+function resetGame() {
+    init();
+}
+
+//Refresh the page
+window.onload = init();
