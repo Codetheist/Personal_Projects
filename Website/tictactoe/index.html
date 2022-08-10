@@ -1,48 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<title>Tic Tac Toe</title>
+    <head>
+        <title>Tic Tac Toe</title>
 
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="" />
-<meta name="author" content="" />
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
 
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"/>
+        <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css"/>
+        <link rel="stylesheet" href="styles.css" />
 
-<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
-<link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
-</head>
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css"/>
+        <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css"/>
+    </head>
 
-<body>
-    <section class="w3-container w3-center" id="home">
-        <h1 class="w3-theme-lg">Tic Tac Toe</h1>
-        
+    <body>
+        <section class="w3-container w3-center" id="home">
+            <h1 class="w3-theme-lg">Tic Tac Toe</h1>
 
-        <div id="board">
-            <div data-cell-index id="cell"></div>
-            <div data-cell-index id="cell"></div>
-            <div data-cell-index id="cell"></div>
-            <div data-cell-index id="cell"></div>
-            <div data-cell-index id="cell"></div>
-            <div data-cell-index id="cell"></div>
-            <div data-cell-index id="cell"></div>
-            <div data-cell-index id="cell"></div>
-            <div data-cell-index id="cell"></div>
-        </div>
+            <div id="board">
+                <div data-cell-index id="cell"></div>
+                <div data-cell-index id="cell"></div>
+                <div data-cell-index id="cell"></div>
+                <div data-cell-index id="cell"></div>
+                <div data-cell-index id="cell"></div>
+                <div data-cell-index id="cell"></div>
+                <div data-cell-index id="cell"></div>
+                <div data-cell-index id="cell"></div>
+                <div data-cell-index id="cell"></div>
+            </div>
 
-        <h2 id="status"></h2>
-        
-        <button class="w3-button w3-theme-d2 w3-margin-top" onclick="initializeGame()" id="start">Start Game</button>
-        <button class="w3-button w3-theme-d2 w3-margin-top" onclick="resetGame()" id="reset">Reset Game</button>
-        <audio class="w3-display-bottommiddle" controls loop autoplay>
-            <source src="audio/home.mp3" type="audio/mp3">
-        </audio>
-    </section>
-</body>
+            <h2 id="status"></h2>
+            
+            <!--Computer move-->
+            <h2 id="randomNumber"></h2>
 
-<script src="script.js"></script>
+            <button class="w3-button w3-theme-d2 w3-margin-top" onclick="resetGame()" id="reset">Reset Game</button>
+            <audio class="w3-display-bottommiddle" controls loop autoplay>
+                <source src="audio/home.mp3" type="audio/mp3" />
+            </audio>
+        </section>
+    </body>
+
+    <script src="script.js"></script>
 </html>
