@@ -3,29 +3,19 @@
     grid-template-columns: repeat(3, auto);
     width: 306px;
     margin: 10px auto;
-    color: black;
+    background-color: #11213a;
+    color: #04c0b2;
 }
 
 #cell {
     font-family: "Permanent Marker", cursive;
     width: 100px;
     height: 100px;
-    border: 1px solid black;
+    box-shadow: 2px 2px 2px 2px #ecd7ba;
+    border: 2px solid #ecd7ba;
     cursor: pointer;
     line-height: 100px;
     font-size: 60px;
-}
-
-#cell:hover {
-    background-color: #f2f2f2;
-}
-
-#cell.x {
-    color: #00bcd4;
-}
-
-#cell.o {
-    color: #e91e63;
 }
 
 #status {
