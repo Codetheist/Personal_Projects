@@ -4,7 +4,13 @@ let isGameActive = true;
 let player = "X";
 let computer = "O";
 
-let board = ["", "", "", "", "", "", "", "", ""];
+let gameBoard = ["", "", "", "", "", "", "", "", ""];
+
+/*const playerTurn = () => {
+    return "It's " + player + " turn";
+}
+
+GAME_STATUS.innerHTML = playerTurn();*/
 
 const WINNING_COMBINATION = [
     [0, 1, 2],
@@ -17,88 +23,96 @@ const WINNING_COMBINATION = [
     [2, 4, 6]
 ];
 
-function clickCell(cellClickedEvent) {
-    const cellClicked = cellClickedEvent.target;
-    const cellNumber = parseInt(cellClicked.getAttribute('data-cell-index'));
+// Initialize game
+function initializeGame() {
+    gameBoard = ["", "", "", "", "", "", "", "", ""];
+    isGameActive = true;
+    player = "X";
+    computer = "O";
+    GAME_STATUS.innerHTML = "It's X turn";
+}
 
-    if (board[cellNumber] === "" && !isGameActive) {
-        return;
+// Update game board
+function updateGameBoard() {
+    let gameBoardHTML = "";
+    for (let i = 0; i < gameBoard.length; i++) {
+        gameBoardHTML += "<div class='cell' data-cell-index='" + i + "'>" + gameBoard[i] + "</div>";
     }
+    document.querySelector("#board").innerHTML = gameBoardHTML;
+}
 
-    if (board[cellNumber] === "") {
-        board[cellNumber] = player;
-        cellClicked.innerText = player;
-        player = player === "X" ? "O" : "X";
-        cellClicked.classList.add("clicked");
-        checkForWinner();
-        if (isGameActive) {
-            computerTurn();
+// Check if game is over
+function isGameOver(gameBoard) {
+    for (let i = 0; i < WINNING_COMBINATION.length; i++) {
+        let [a, b, c] = WINNING_COMBINATION[i];
+        if (gameBoard[a] === gameBoard[b] && gameBoard[b] === gameBoard[c] && gameBoard[a] !== "") {
+            return true;
         }
     }
+    return false;
+}
+
+// Check if game is draw
+function isGameDraw(gameBoard) {
+    for (let i = 0; i < gameBoard.length; i++) {
+        if (gameBoard[i] === "") {
+            return false;
+        }
+    }
+    return true;
 }
 
 // Computer turn
 function computerTurn() {
     let randomNumber = Math.floor(Math.random() * 9);
-    if (board[randomNumber] === "") {
-        board[randomNumber] = computer;
-        document.querySelector(`#cell-${randomNumber}`).innerText = computer;
-        changePlayer();
-        checkWinner();
-    } else {
-        computerTurn();
+    while (gameBoard[randomNumber] !== "") {
+        randomNumber = Math.floor(Math.random() * 9);
     }
+    gameBoard[randomNumber] = computer;
+    updateGameBoard();
 }
 
-// Check winner
-function checkWinner() {
-    for (let i = 0; i < WINNING_COMBINATION.length; i++) {
-        const [a, b, c] = WINNING_COMBINATION[i];
-        if (board[a] && board[a] === board[b] && board[a] === board[c]) {
+// Player turn
+function playerTurn(cellClickedEvent) {
+    let cellClicked = cellClickedEvent.target;
+    let cellClickedIndex = parseInt(cellClicked.getAttribute("data-cell-index"));
+    if (gameBoard[cellClickedIndex] === "") {
+        gameBoard[cellClickedIndex] = player;
+        updateGameBoard();
+        if (isGameOver(gameBoard)) {
+            GAME_STATUS.innerHTML = "Game Over";
             isGameActive = false;
-            GAME_STATUS.innerText = `${board[a]} wins!`;
-            document.querySelectorAll('#cell').forEach(cell => cell.classList.add("clicked"));
+        } else if (isGameDraw(gameBoard)) {
+            GAME_STATUS.innerHTML = "Game Draw";
+            isGameActive = false;
+        } else {
+            player = "X";
+            computer = "O";
+            GAME_STATUS.innerHTML = "It's O turn";
         }
     }
-
-    if (!board.includes("") && isGameActive) {
-        GAME_STATUS.innerText = "Draw!";
-    }
-
-    if (!isGameActive) {
-        GAME_STATUS.innerText = "Game Over!";
-    }
-
-    if (!isGameActive) {
-        document.querySelectorAll('#cell').forEach(cell => cell.removeEventListener("click", clickCell));
-    }
-
-    if (isGameActive) {
-        changePlayer();
-    }
 }
 
-// Change player
-function changePlayer() {
-    if (player === "X") {
-        player = "O";
-        computer = "X";
-    } else {
-        player = "X";
-        computer = "O";
-    }
-}
 
 // Reset game
 function resetGame() {
-    board = ["", "", "", "", "", "", "", "", ""];
-    isGameActive = true;
-    GAME_STATUS.innerText = "";
-    document.querySelectorAll('#cell').forEach(cell => cell.innerText = "");
+    initializeGame();
 }
 
-// Reset game on refresh
-window.addEventListener('load', resetGame);
+// Cell click event
+function clickCell(cellClickedEvent) {
+    const cellClicked = cellClickedEvent.target;
+    const cellNumber = parseInt(cellClicked.getAttribute('data-cell-index'));
 
-document.querySelectorAll('#cell').forEach(cell => cell.addEventListener('click', clickCell));
+    if (gameBoard[cellNumber] !== '' || !isGameActive) {
+        return;
+    }
+}
+
+document.querySelectorAll("#cell").forEach(cell => (cell.addEventListener('click', clickCell)));
 document.querySelector('#reset').addEventListener('click', resetGame);
+
+// Refresh page
+window.onload = function() {
+    initializeGame();
+}
