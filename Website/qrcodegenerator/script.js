@@ -1,67 +1,74 @@
-const FORM = document.getElementById('form-generator');
-const QRCODE = document.getElementById('qrcode');
+const form = document.getElementById('form-generator');
+const qr_code = document.getElementById('qrcode');
 
-const GENERATE_QRCode = (code) => {
-    code.preventDefault();
+// Submit form
+const submitForm = (e) => {
+    e.preventDefault();
 
-    CLEAR_QRCODE();
+    clearQRCode();
 
-    const URL = document.getElementById('url').value;
-    const SIZE = document.getElementById('size').value;
+    const url = document.getElementById('url').value;
+    const size = document.getElementById('size').value;
 
-    if (URL === '') {
-        alert('Please enter a URL or Message');
-        return;
+    if (url === '') {
+        alert('Please enter a URL');
     } else {
-        SPINNER();
+        showSpinner();
 
         setTimeout(() => {
-            STOP_SPINNER();
+            hideSpinner();
+            generateQrCode(url, size);
 
-            CODE_GENERATOR(URL, SIZE);
             setTimeout(() => {
-                const QRCODE_IMAGE = QRCODE.querySelector('img').src;
-                SAVE_QRCODE(QRCODE_IMAGE);
+                const saveLink = qr_code.querySelector('img').src;
+
+                saveButton(saveLink);
             }, 50);
         }, 1000);
     }
 }
 
-const CODE_GENERATOR = (url, size) => {
-    const QR_CODE = new QR_CODE(QRCODE, {
+// Generate QR Code
+const generateQrCode = (url, size) => {
+    const qrcode = new QRCode('qrcode', {
         text: url,
         width: size,
-        height: size,
+        height: size
     });
 }
 
-const SPINNER = () => {
-    document.getElementById('spinner').style.display = 'block';
-}
-
-const STOP_SPINNER = () => {
-    document.getElementById('spinner').style.display = 'none';
-}
-
-const CLEAR_QRCODE = () => {
-    QRCODE.innerHTML = '';
-
-    const SAVE_URL = document.getElementById('save-url');
-    if (SAVE_URL) {
-        SAVE_URL.remove();
+// Clear QR Code
+const clearQRCode = () => {
+    qr_code.innerHTML = '';
+    const submitButton = document.getElementById('data-link');
+    if (submitButton) {
+        submitButton.remove();
     }
 }
 
-const SAVE_QRCODE = (SAVE_URL) => {
-    const DATA_URL = document.createElement('save');
-    DATA_URL.id = 'save-url';
-    DATA_URL.classList = 'bg-red-500 hover:bg-red-700 text-white font-bold py-2 rounded w-1/3 m-auto my-5';
-    DATA_URL.href = SAVE_URL;
-    DATA_URL.download = 'qrcode';
-    DATA_URL.innerHTML = 'Save QRCode';
-    document.getElementById('generated').appendChild(DATA_URL);
+// Show spinner
+const showSpinner = () => {
+    const spinner = document.getElementById('spinner');
+    spinner.style.display = 'block';
 }
 
-STOP_SPINNER();
+// Hide spinner
+const hideSpinner = () => {
+    const spinner = document.getElementById('spinner');
+    spinner.style.display = 'none';
+}
 
-FORM.addEventListener('submit', GENERATE_QRCode);
+// Save button
+const saveButton = (saveLink) => {
+    const dataLink = document.createElement('a');
+    dataLink.id = 'data-link';
+    dataLink.classList = 'bg-blue-800 hover:bg-black text-white font-bold py-2 rounded w-1/3 m-auto my-5';
+    dataLink.href = saveLink;
+    dataLink.download = 'qrcode';
+    dataLink.innerHTML = 'Save';
+    document.getElementById('generated').appendChild(dataLink);
+}
+
+hideSpinner();
+
+form.addEventListener('submit', submitForm);
