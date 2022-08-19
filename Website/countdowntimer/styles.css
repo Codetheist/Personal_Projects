@@ -1,0 +1,14 @@
+#radioCategory .choice {
+    display: inline-block;
+}
+
+#radioCategory label {
+    display: block;
+    text-align: center;
+    margin: 10px;
+}
+
+#radioCategory input[type="radio"] {
+    display: block;
+    margin: 10px auto;
+}
