@@ -1,0 +1,4 @@
+#radioCategory input[type="radio"] {
+    display: block;
+    margin: 10px auto;
+}
