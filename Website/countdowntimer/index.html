@@ -26,7 +26,7 @@
 
     <body class="container mx-auto">
         <main class="align-center justify-center m-auto md:max-w-2xl bg-gray-200">
-            <div id="radioCategory">
+            <!--<div id="radioCategory">
                 <h1 class="text-center border-solid border-4 bg-blue-700 text-white">Category:</h1>
 
                 <div  class="text-center flex flex-wrap grid grid-cols-4 row-gap-2 col-gap-4">
@@ -142,7 +142,7 @@
                         </label>
                     </div>
                 </div>
-            </div>
+            </div>-->
 
             <!--<div>
                 <label for="title" class="p-3">Countdown Title</label>
@@ -151,59 +151,88 @@
             
             <div id="countdown" class="py-8">
                 <h3 id="timer" class="text-center border-solid border-2 bg-gray-100">Countdown Timer</h3>
+                
+                <div class="py-4 border-solid border-8 text-center gap-x-px" id="display">
+                    <div class="inline-block">
+                        <span class="text-2xl font-bold" id="years"></span>
+                        <p class="block">Years</p>
+                    </div>
+                    <div class="inline-block">
+                        <span class="text-2xl font-bold" id="months"></span>
+                        <p class="block">Months</p>
+                    </div>
+                    <div class="inline-block">
+                        <span class="text-2xl font-bold" id="days"></span>
+                        <p class="block">Days</p>
+                    </div>
+                    <div class="inline-block">
+                        <span class="text-2xl font-bold" id="hours"></span>
+                        <p class="block">Hours</p>
+                    </div>
+                    <div class="inline-block">
+                        <span class="text-2xl font-bold" id="minutes"></span>
+                        <p class="block">Minutes</p>
+                    </div>
+                    <div class="inline-block">
+                        <span class="text-2xl font-bold" id="seconds"></span>
+                        <p class="block">Seconds</p>
+                    </div>
+                </div>
+                
                 <div class="py-32 flex-flow space-x-7 gap-y-0">
                     <div class="text-center">
-
-                        <div class="flex flex-wrap space-x-2">
-                            <span class="text-2xl font-bold" id="display"></span>
-                        </div>
-
                         <div class="inline-block m-auto p-1">
                             <div class="grid grid-cols-1 gap-4 flex flex-wrap content-evenly">
                                 
                                 <!--Placement for the dates-->
                                 <div class="inline-grid gap-1 grid-cols-3">
-                                    <div class="text-left">
-                                        <input type="text" name="months" class="border-8 inline-block" id="months" maxlength="12" size="3" placeholder="mm" />
+                                    <div class="text-center">
+                                        <label for="date" class="text-2xl block">Date</label>
+                                        <input type="date" name="date" class="border border-gray-400 rounded-lg px-4 py-2" value="" id="date" placeholder="Enter Date..." />
+                                        <!--<input type="text" name="months" class="border-8 inline-block" value="" id="month" maxlength="12" size="3" placeholder="mm" />
                                         <span class="">&nbsp;/&nbsp;</span>
-                                        <label for="months" class="block">Months</label>
+                                        <label for="month" class="block">Months</label>
                                     </div>
                                     
                                     <div class="text-left">
-                                        <input type="text" name="days" class="border-8 inline-block" maxlength="2" id="days" size="3" placeholder="dd" />
+                                        <input type="text" name="days" class="border-8 inline-block" maxlength="2" value="" id="day" size="3" placeholder="dd" />
                                         <span class="">&nbsp;/&nbsp;</span>
-                                        <label for="days" class="block">Days</label>
+                                        <label for="day" class="block">Days</label>
                                     </div>
                                     
                                     <div class="text-left">
-                                        <input type="text" name="years" class="border-8 inline-block" maxlength="4" size="5" id="years" placeholder="yyyy" />
-                                        <label for="years" class="block">Years</label>
+                                        <input type="text" name="years" class="border-8 inline-block" maxlength="4" size="5" value="" id="year" placeholder="yyyy" />
+                                        <label for="year" class="block">Years</label>-->
                                     </div>
                                 </div>
                                 
                                 <!--Placement for the time-->
                                 <div class="inline-grid gap-1 grid-cols-3">
                                     <div class="text-left">
-                                        <input type="text" name="hours" class="border-8 inline-block" id="hours" size="3" placeholder="hh" />
+                                        <!--<input type="text" name="hours" class="border-8 inline-block" value="" id="hour" size="3" placeholder="hh" />
                                         <span class="">&nbsp;:&nbsp;</span>
-                                        <label for="hours" class="block">Hours</label>
+                                        <label for="hour" class="block">Hours</label>
                                     </div>
                                     
                                     <div class="text-left">
-                                        <input type="text" name="minutes" class="border-8 inline-block" id="minutes" size="3" placeholder="mm" />
+                                        <input type="text" name="minutes" class="border-8 inline-block" value="" id="minute" size="3" placeholder="mm" />
                                         <span class="">&nbsp;:&nbsp;</span>
-                                        <label for="minutes" class="block">Minutes</label>
+                                        <label for="minute" class="block">Minutes</label>
                                     </div>
                                     
                                     <div class="text-left">
-                                        <input type="text" name="seconds" class="border-8 inline-block" id="seconds" size="3" placeholder="ss" />
-                                        <label for="seconds" class="block">Seconds</label>
+                                        <input type="text" name="seconds" class="border-8 inline-block" value="" id="second" size="3" placeholder="ss" />
+                                        <label for="second" class="block">Seconds</label>-->
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                </div>
+                
+                <div class="gap-2 grid-cols-2 flex justify-center">
                     <button id="submit" class="flex content-center alight-center bg-green-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg" onclick="startCountDown()">Submit</button>
+                    <button id="reset" class="flex content-center alight-center bg-red-500 hover:bg-gray-900 text-white font-bold py-2 px-4 rounded-lg" onclick="resetCountDown()">Reset</button>
                 </div>
             </div>
         </main>
