@@ -1,19 +1,12 @@
 //let radioCategory = document.getElementById("radioCategory");
 //let title = document.getElementById("title");
 
-// Users input date
-/*let inputUserMonth = document.getElementById("month");
-let inputUserDay = document.getElementById("day");
-let inputUserYear = document.getElementById("year");
-
-// Users input time
-let inputUserHour = document.getElementById("hour");
-let inputUserMinute = document.getElementById("minute");
-let inputUserSecond = document.getElementById("second");*/
-
-
-
-const dateValue = document.getElementById("date");
+let year = document.getElementById("year");
+let month = document.getElementById("month");
+let day = document.getElementById("day");
+let hour = document.getElementById("hour");
+let minute = document.getElementById("minute");
+let second = document.getElementById("second");
 
 // Display countdown timer
 let years = document.getElementById("years");
@@ -30,52 +23,58 @@ let dateSelected = "";
 
 let differenceInTime = "";
 let difference = "";
+let count = "";
 
 //Creat a function to start the countdown timer
 function calculateCountdown() {
-    dateSelected = new Date(dateValue.value).getTime();
-    differenceInTime = dateSelected - TODAY;
-    difference = Math.floor(differenceInTime / 1000);
 
-    // Formulate to calculate the years, months, days, hours, minutes, seconds
-    difference--;
+    // Check to see if the input is valid and not empty make sure Februrary is valid
+    if (year.value == "" || month.value == "" || day.value == "" || hour.value == "" || minute.value == "" || second.value == "") {
+        alert("Please enter a valid date");
+    } else if (year.value < 0 || month.value < 0 || day.value < 0 || hour.value < 0 || minute.value < 0 || second.value < 0) {
+        alert("Please enter a valid date");
+    } else if (year.value > 9999 || month.value > 12 || day.value > 31 || hour.value > 23 || minute.value > 59 || second.value > 59) {
+        alert("Please enter a valid date");
+    } else if (month.value == 2 && day.value > 29) {
+        alert("Please enter a valid date");
+    } else if (month.value == 2 && day.value == 29 && (year.value % 4 != 0)) {
+        alert("Please enter a valid date");
+    } else {
 
-    years = Math.floor(difference / (365 * 24 * 60 * 60)); // 365 days in a year
-    difference = difference % (365 * 24 * 60 * 60); // Remaining days
-
-    months = Math.floor(difference / (30 * 24 * 60 * 60)); // 30 days in a month
-    difference = difference % (30 * 24 * 60 * 60); // Remaining days
-
-    days = Math.floor(difference / (24 * 60 * 60)); // 24 hours in a day
-    difference = difference % (24 * 60 * 60); // Remaining days
-
-    hours = Math.floor(difference / (60 * 60)); // 60 minutes in an hour
-    difference = difference % (60 * 60); // Remaining minutes
-
-    minutes = Math.floor(difference / 60); // 60 seconds in a minute
-    difference = difference % 60; // Remaining seconds
-
-    seconds = difference; // Remaining seconds
-
-    // If the countdown timer is finished, display the message
-    if (difference > 0) {
+        dateSelected = new Date(year.value, month.value, day.value, hour.value, minute.value, second.value).getTime();
 
         // Display the countdown timer
-        display = `${years < 10 ? '0' + years : years} ${months < 10 ? '0' + months : months}
-        ${days < 10 ? '0' + days : days} ${hours < 10 ? '0' + hours : hours}
-        ${minutes < 10 ? '0' + minutes : minutes} ${seconds < 10 ? '0' + seconds : seconds}`;
-        document.getElementById("display").innerHTML = display;
+        count = setInterval(function () {
+            // Get the difference between the date selected and today
+            differenceInTime = dateSelected - TODAY;
 
-    } else {
-        document.getElementById("display").innerHTML = "Time's up!";
+            // Get the difference in time in seconds
+            difference = Math.floor(differenceInTime / 1000);
+
+            // Calcuations for the countdown timer
+            years = Math.floor(difference / 31536000);
+            months = Math.floor((difference % 31536000) / 2628000);
+            days = Math.floor(((difference % 31536000) % 2628000) / 86400);
+            hours = Math.floor((((difference % 31536000) % 2628000) % 86400) / 3600);
+            minutes = Math.floor(((((difference % 31536000) % 2628000) % 86400) % 3600) / 60);
+            seconds = Math.floor(((((difference % 31536000) % 2628000) % 86400) % 3600) % 60);
+
+            // Display the countdown timer
+            document.getElementById("display").innerHTML = years + " Years " + months + " Months " + days + " Days " + hours + " Hours " + minutes + " Minutes " + seconds + " Seconds";
+
+            // If the difference in time is less than 0, then the countdown timer is finished
+            if (difference < 0) {
+                clearInterval(count);
+                document.getElementById("display").innerHTML = "Countdown finished";
+            }
+        }, 1000);
     }
 }
 
 // Function to start the countdown timer
 function startCountDown() {
-    setInterval(calculateCountdown, 1000);
+    calculateCountdown();
 }
-
 
 // Function to reset the countdown timer
 function resetCountDown() {
