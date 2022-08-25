@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Countdown Time</title>
+        <title>Countdown Timer</title>
 
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -155,27 +155,21 @@
                 <div class="py-4 border-solid border-8 text-center gap-x-px" id="display">
                     <div class="inline-block">
                         <span class="text-2xl font-bold" id="years"></span>
-                        <p class="block">Years</p>
                     </div>
                     <div class="inline-block">
                         <span class="text-2xl font-bold" id="months"></span>
-                        <p class="block">Months</p>
                     </div>
                     <div class="inline-block">
                         <span class="text-2xl font-bold" id="days"></span>
-                        <p class="block">Days</p>
                     </div>
                     <div class="inline-block">
                         <span class="text-2xl font-bold" id="hours"></span>
-                        <p class="block">Hours</p>
                     </div>
                     <div class="inline-block">
                         <span class="text-2xl font-bold" id="minutes"></span>
-                        <p class="block">Minutes</p>
                     </div>
                     <div class="inline-block">
                         <span class="text-2xl font-bold" id="seconds"></span>
-                        <p class="block">Seconds</p>
                     </div>
                 </div>
                 
@@ -186,43 +180,41 @@
                                 
                                 <!--Placement for the dates-->
                                 <div class="inline-grid gap-1 grid-cols-3">
-                                    <div class="text-center">
-                                        <label for="date" class="text-2xl block">Date</label>
-                                        <input type="date" name="date" class="border border-gray-400 rounded-lg px-4 py-2" value="" id="date" placeholder="Enter Date..." />
-                                        <!--<input type="text" name="months" class="border-8 inline-block" value="" id="month" maxlength="12" size="3" placeholder="mm" />
+                                    <div class="text-left">
+                                        <input type="text" name="months" class="border-8 inline-block" id="month" min="0" max="11" maxlength="2" size="3" placeholder="mm" />
                                         <span class="">&nbsp;/&nbsp;</span>
                                         <label for="month" class="block">Months</label>
                                     </div>
                                     
                                     <div class="text-left">
-                                        <input type="text" name="days" class="border-8 inline-block" maxlength="2" value="" id="day" size="3" placeholder="dd" />
+                                        <input type="text" name="days" class="border-8 inline-block" maxlength="2" id="day" size="3" placeholder="dd" min="1" max="31"/>
                                         <span class="">&nbsp;/&nbsp;</span>
                                         <label for="day" class="block">Days</label>
                                     </div>
                                     
                                     <div class="text-left">
-                                        <input type="text" name="years" class="border-8 inline-block" maxlength="4" size="5" value="" id="year" placeholder="yyyy" />
-                                        <label for="year" class="block">Years</label>-->
+                                        <input type="text" name="years" class="border-8 inline-block" maxlength="4" size="5" id="year" placeholder="yyyy" />
+                                        <label for="year" class="block">Years</label>
                                     </div>
                                 </div>
                                 
                                 <!--Placement for the time-->
                                 <div class="inline-grid gap-1 grid-cols-3">
                                     <div class="text-left">
-                                        <!--<input type="text" name="hours" class="border-8 inline-block" value="" id="hour" size="3" placeholder="hh" />
+                                        <input type="text" name="hours" class="border-8 inline-block" id="hour" min="00" max="23" maxlength="2" size="3" placeholder="hh" />
                                         <span class="">&nbsp;:&nbsp;</span>
                                         <label for="hour" class="block">Hours</label>
                                     </div>
                                     
                                     <div class="text-left">
-                                        <input type="text" name="minutes" class="border-8 inline-block" value="" id="minute" size="3" placeholder="mm" />
+                                        <input type="text" name="minutes" class="border-8 inline-block" id="minute" min="00" max="59" maxlength="2" size="3" placeholder="mm" />
                                         <span class="">&nbsp;:&nbsp;</span>
                                         <label for="minute" class="block">Minutes</label>
                                     </div>
                                     
                                     <div class="text-left">
-                                        <input type="text" name="seconds" class="border-8 inline-block" value="" id="second" size="3" placeholder="ss" />
-                                        <label for="second" class="block">Seconds</label>-->
+                                        <input type="text" name="seconds" class="border-8 inline-block" id="second" min="00" max="59" size="3" placeholder="ss" />
+                                        <label for="second" class="block">Seconds</label>
                                     </div>
                                 </div>
                             </div>
