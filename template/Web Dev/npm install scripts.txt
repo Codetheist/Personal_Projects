@@ -1,0 +1,8 @@
+Run the following command for each new project.
+npm install -D tailwindcss
+npx tailwindcss init
+
+npx tailwindcss -i ./src/input.css -o ./dist/output.css --watch
+npx tailwindcss -i ./src/input.css -o ./dist/output.css --minify /*Used for production*/
+
+npm install @tailwindcss/typography @tailwindcss/forms @tailwindcss/line-clamp @tailwindcss/aspect-ratio
