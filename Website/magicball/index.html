@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Magic 8-Ball</title>
+
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+
+        <!--CSS Links-->
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script>
+            tailwind.config = {
+                theme: {
+                    extend: {
+                        fontFamily: {
+                            sans: ['Roboto', 'sans-serif']
+                        }
+                    }
+                }
+            }
+        </script>
+    </head>
+
+    <body>
+        
+        <main class="container mx-auto">
+            <div class="">
+                <h1 class="text-2xl font-bold text-center">Magic 8-Ball</h1>
+                <p class="text-center">Ask a question and the Magic 8-Ball will answer!</p>
+                <form class="" method="post">
+                    <div class="flex flex-col items-center">
+                        <input type="text" name="question" id="question" class="w-full p-2 border border-gray-400 rounded-lg" placeholder="Ask a question..." />
+                        <input type="submit" value="Ask" class="w-full p-2 border border-gray-400 rounded-lg animate-pulse" onclick=askMe()/>
+                    </div>
+                </form>
+                <div>
+                    <button class="w-full p-2 border border-gray-400 rounded-lg animate-pulse" onclick=clearAll()>Clear</button>
+                </div>
+            </div>
+
+            <div class="pl-40 py-8">
+                <!--Magic ball layer-->
+                    <div id="magicball" class="bg-black p-20 h-72 w-72 rounded-full">
+                        <!--Display the answers-->
+                        <div class="-translate-x-11 w-0 h-0 border-l-[110px] border-l-transparent border-t-[170px] border-t-indigo-700 border-r-[110px] border-r-transparent">
+                            <div class="text-xl font-bold flex flex-nowrap">
+                                <p class="-translate-y-32 -translate-x-4 bold text-white">This is a test to checking the wraping of the answers.</p>
+                                <span id="answer"></span>
+                            </div>
+                        </div>                        
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+    </body>
+
+    <!--JS Link-->
+    <script src="script.js"></script>
+</html>
