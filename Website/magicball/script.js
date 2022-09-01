@@ -1,6 +1,7 @@
-let question = document.getElementById("question");
+let question = document.querySelector("#question");
 let magicBall = document.getElementById("magicball");
 let answer = document.getElementById("answer");
+let displayTriangle = document.getElementById("triangle");
 
 // Array answer for a magic 8 ball
 let giveAnswers = [
@@ -28,34 +29,49 @@ let giveAnswers = [
 
 // Function to get a random answer from the array
 function askMe() {
-    let random = Math.floor(Math.random() * giveAnswers.length);
-    return giveAnswers[random];
+
+    if (question.value === "") {
+
+        question.classList.add("animate__heartBeat");
+        answer.innerHTML = "Please Enter a Question";
+        displayTriangle.style.visibility = "visible";
+
+        setTimeout(function () {
+            question.classList.remove("animate__heartBeat");
+            answer.innerHTML = "";
+            displayTriangle.style.visibility = "hidden";
+        }, 2000);
+
+    } else if (question.value != "") {
+        answer.innerHTML = giveAnswers[Math.floor(Math.random() * giveAnswers.length)];
+        displayTriangle.style.visibility = "visible";
+
+        setTimeout(function () {
+            answer.innerHTML = "";
+            displayTriangle.style.visibility = "hidden";
+        }, 2000);
+    }
+
 }
 
-// Function to create the magic 8 ball
-function magic8Ball() {
-    answer = askMe();
-    magicBall.innerHTML = answer;
-}
-
-// Function to clear the magic 8 ball
-function clearMagic8Ball() {
-    magicBall.innerHTML = "";
-}
-
-// Function to clear the question
+// Function to clear the question and answer
 function clearQuestion() {
     question.value = "";
+    answer.innerHTML = "";
+    displayTriangle.style.visibility = "hidden";
 }
 
-// Function to clear the magic 8 ball and the question
-function clearAll() {
-    clearMagic8Ball();
-    clearQuestion();
+// Funtion to start the magic 8 ball
+function startMagic() {
+    displayTriangle.style.visibility = "hidden";
+
+    question.placeholder = "Ask me a question...";
+
+    //Event listener for the button everytime the user presses the button
+    magicBall.addEventListener("click", askMe);
+
+    //Event listener for the clear button
+    clearButton.addEventListener("click", clearQuestion);
 }
 
-// Function to ask the magic 8 ball
-function ask() {
-    magic8Ball();
-    clearQuestion();
-}
+startMagic();
