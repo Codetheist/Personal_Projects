@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Sports</title>
+
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+
+        <!--CSS Links-->
+        <link href="/Website/sportapp/dist/output.css" rel="stylesheet">
+    </head>
+
+    <body>
+        <main class="container mx-auto">
+            <div class="flex flex-col-reverse align-center justify-center m-auto md:max-w-4xl md:flex-row p-10">
+                <div class="flex flex-col items-center justify-center">
+                    <h1 class="text-6xl font-bold text-center">Sports</h1>
+                    <p class="text-2xl text-center mt-8">Select a sport to view the schedule</p>
+                    <p class="text-lg mt-4">If you wish to check out the probability <a href="/Website/sportapp/src/pages/probability.html" class="underline italic">click here</a>.</p>
+                </div>
+            </div>
+            
+            <!--Create buttons-->
+            <div class="container">
+                <div class="flex flex-wrap justify-center space-x-3">
+                    <div id="sport">
+                        <button class="bg-blue-600 rounded text-white py-3 px-4 mt-5 hover:bg-black" id="football" type="button">Football</button>
+                        <button class="bg-blue-600 rounded text-white py-3 px-4 mt-5 hover:bg-black" id="basketball" type="button">Basketball</button>
+                        <button class="bg-blue-600 rounded text-white py-3 px-4 mt-5 hover:bg-black" id="baseball" type="button">Baseball</button>
+                        <button class="bg-blue-600 rounded text-white py-3 px-4 mt-5 hover:bg-black" id="hockey" type="button">Hockey</button>
+                        <button class="bg-blue-600 rounded text-white py-3 px-4 mt-5 hover:bg-black" id="soccer" type="button">Soccer</button>
+                    </div>
+                </div>
+            </div>
+
+            <!--Create table-->
+            <div class="container max-w-xl mx-auto text-center mt-4 bg-gray-500">
+                <table class="table-fixed">
+                    <thead>
+                        <tr class="">
+                            <th class="px-4 py-2" id="date"></th>
+                            <th class="px-4 py-2" id="time"></th>
+                            <th class="px-4 py-2" id="home"></th>
+                            <th class="px-4 py-2" id="away"></th>
+                            <th class="px-4 py-2" id="location"></th>
+                        </tr>
+                    </thead>
+                    <tbody id="table">
+                        <tr>
+                            <td class="text-sm"></td>
+                            <td class="text-sm"></td>
+                            <td class="text-sm"></td>
+                            <td class="text-sm"></td>
+                            <td class="text-sm"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </body>
+
+    <!--JS Link-->
+    <script src="src/js/script.js"></script>
+</html>
