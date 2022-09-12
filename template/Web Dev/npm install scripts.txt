@@ -1,5 +1,6 @@
 Run the following command for each new project.
 npm install -D tailwindcss
+npm install dotenv
 npx tailwindcss init
 
 npm install @tailwindcss/typography @tailwindcss/forms @tailwindcss/line-clamp @tailwindcss/aspect-ratio
