@@ -9,6 +9,9 @@
         <meta name="author" content="" />
 
         <!--CSS Links-->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
+        <!--Tailwind Script-->
         <script src="https://cdn.tailwindcss.com"></script>
         <script>
             tailwind.config = {
@@ -23,30 +26,33 @@
         </script>
     </head>
 
-    <body class="container mx-auto">
-        <main class="align-center justify-center m-auto md:max-w-2xl">
-            <div class="">
+    <body class="container mx-auto bg-gray-200">
+        <main class="m-auto md:max-w-4xl md:flex-row p-8">
+            <div class="animate__shakeX">
                 <h1 class="text-2xl font-bold text-center">Magic 8-Ball</h1>
-                <p class="text-center">Ask a question and the Magic 8-Ball will answer!</p>
-                <form class="" method="post">
-                    <div class="flex flex-col items-center">
-                        <input type="text" name="question" id="question" class="w-full p-2 border border-gray-400 rounded-lg" placeholder="Ask a question..." />
-                        <input type="submit" value="Ask" class="w-full p-2 border border-gray-400 rounded-lg animate-pulse" onclick=askMe()/>
-                    </div>
-                </form>
+                <p class="text-center my-2">Ask a question and the Magic 8-Ball will answer!</p>
+                <div class="flex flex-col items-center">
+                    <input type="text" name="question" id="question" class="w-full p-2 border border-gray-400 rounded-lg my-3" />
+                    <button class="w-full p-2 border border-gray-400 rounded-lg animate-pulse hover:bg-cyan-100" onclick="askMe()">Ask Me</button>
+                </div>
+                
                 <div>
-                    <button class="w-full p-2 border border-gray-400 rounded-lg animate-pulse" onclick=clearAll()>Clear</button>
+                    <button class="w-full p-2 border border-gray-400 rounded-lg animate-pulse my-3 hover:bg-red-300" onclick="clearQuestion()">Clear</button>
                 </div>
             </div>
 
-            <div class="pl-48 py-24">
+            <div class="pl-72 py-28">
                 <!--Magic ball layer-->
-                    <div id="magicball" class="bg-black p-20 h-72 w-72 rounded-full">
-                        <!--Display the answers-->
-                        <div class="-translate-x-11 -translate-y-4 w-0 h-0 border-l-[110px] border-l-transparent border-t-[200px] border-t-indigo-700 border-r-[110px] border-r-transparent">
-                            <div class="text-xl font-bold flex flex-nowrap">
-                                <p class="-translate-y-48 -translate-x-7 bold text-white text-sm text-center m-auto">This is a test to checking the wraping of the answers.</p>
-                                <span id="answer"></span>
+                    <div id="magicball" class="bg-black h-96 w-96 rounded-full -translate-x-9">
+                        <!--Border layout-->
+                        <div class="bg-gray-700 h-64 w-64 rounded-full translate-x-16 translate-y-16">
+                            <!--Display the answers-->
+                            <div class="bg-black h-60 w-60 rounded-full translate-x-2 translate-y-2">
+                            <!--Shape the triangle-->
+                            <div id="triangle" class="translate-x-6 translate-y-16 w-0 h-0 border-l-[95px] border-l-transparent border-t-[145px] border-t-indigo-700 border-r-[95px] border-r-transparent">
+                                <div class="text-center flex flex-nowrap -translate-x-5 -translate-y-32">
+                                    <span id="answer" class="text-sm text-white"></span>
+                                </div>
                             </div>
                         </div>                        
                     </div>
