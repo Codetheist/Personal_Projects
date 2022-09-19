@@ -15,17 +15,42 @@
     <body>
         <main class="container mx-auto bg-gray-400">
             <!--Header-->
-            <header class="flex flex-col items-center justify-center">
-                <h1 class="text-4xl font-bold text-center">Let's Watch</h1>
-                <p class="text-xl text-center">Here to provide recommendations</p>
-            </header>
+            <header>
+                <!--Nav Bar-->
+                <nav class="navbar navbar-expand-lg shadow-md py-2 bg-white relative flex items-center w-full justify-between">
+                    <div class="px-6 w-full flex flex-wrap items-center justify-between">
+                        <div class="flex items-center">
+                            <button class="navbar-toggler border-0 py-3 lg:hidden leading-none text-xl bg-transparent text-gray-600 hover:text-gray-700 focus:text-gray-700 transition-shadow duration-150 ease-in-out mr-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContentY" aria-controls="navbarSupportedContentY" aria-expanded="false" aria-label="Toggle navigation">
+                                <svg aria-hidden="true" focusable="false" data-prefix="fas" class="w-5" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                                    <path fill="currentColor" d="M416 208H32c-17.67 0-32 14.33-32 32s14.33 32 32 32h384c17.67 0 32-14.33 32-32s-14.33-32-32-32zm0-160H32C14.33 48 0 62.33 0 80s14.33 32 32 32h384c17.67 0 32-14.33 32-32S433.7 48 416 48zm0 320H32c-17.67 0-32 14.33-32 32s14.33 32 32 32h384c17.67 0 32-14.33 32-32s-14.33-32-32-32z"></path>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="navbar-collapse collapse grow items-center" id="navbarSupportedContentY">
+                            <ul class="navbar-nav mr-auto lg:flex lg:flex-row">
+                                <li class="nav-item">
+                                    <a href="/Website/movie/index.html" class="nav-link block pr-2 lg:px-2 py-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out" data-mdb-ripple="true" data-mdb-ripple-color="light">Home</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/Website/movie/src/pages/movies.html" class="nav-link block pr-2 lg:px-2 py-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out" data-mdb-ripple="true" data-mdb-ripple-color="light">Movies</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/Website/movie/src/pages/shows.html" class="nav-link block pr-2 lg:px-2 py-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out" data-mdb-ripple="true" data-mdb-ripple-color="light">TV Shows</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/Website/movie/src/pages/release.html" class="nav-link block pr-2 lg:px-2 py-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out" data-mdb-ripple="true" data-mdb-ripple-color="light">New Release</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
 
-            <!--Nav Bar-->
-            <nav class="flex flex-row justify-center">
-                <a href="/Website/movie/index.html" class="text-xl font-bold text-center">Home</a>
-                <a href="/Website/movie/src/pages/movies.html" class="text-xl font-bold text-center">Movies</a>
-                <a href="/Website/movie/src/pages/shows.html" class="text-xl font-bold text-center">TV Shows</a>
-            </nav>
+                <!--Hero Banner-->
+                <div class="text-center bg-gray-50 text-gray-800 py-20 px-6">
+                    <h1 class="text-5xl font-bold mt-0 mb-6">Let's Watch</h1>
+                    <h3 class="text-3xl font-bold mb-8">Here to provide recommendations</h3>
+                </div>
+            </header>
 
             <!--Main Content-->
         </main>
