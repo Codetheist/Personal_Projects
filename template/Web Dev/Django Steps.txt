@@ -58,3 +58,14 @@ Run the latest Python
 |   ROOT_URL=${DOMAIN}/app                                                         |
 |6. create .gitignore in root to add .env                                          |
 |__________________________________________________________________________________|
+|______________________________________________________________________|
+|                    Creating a virtual environment                    |
+|______________________________________________________________________|
+|1. virtualenv --python C:\Path\To\Python\python.exe env               |
+|2. .\venv\Scripts\activate                                            |
+|3. deactivate # to deactivate the virtual environment                 |
+|4. pip freeze > requirements.txt # to create a requirements.txt file  |
+|5. django-admin startproject myproject # to create a new project      |
+|6. python manage.py startapp myapp # to create a new app              |
+|7. python manage.py runserver # to run the server                     |
+|______________________________________________________________________|
