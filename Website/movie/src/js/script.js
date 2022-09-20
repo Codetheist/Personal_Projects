@@ -5,7 +5,7 @@ require('dotenv').config();
 // Getting ID elements
 
 // Movie
-let movieBackgroundImage = document.getElementById("background-image");
+//let movieBackgroundImage = document.getElementById("now-playing-img").src;
 let movieTitle = document.getElementById("title");
 let movieGenre = document.getElementById("genre");
 let movieRelease = document.getElementById("release-date");
@@ -36,25 +36,24 @@ let newReleaseData = [];
 let searchResultData = [];
 
 // API path
-const URL_PATH = "https://api.themoviedb.org/3/";
-const IMAGE_PATH = "https://image.tmdb.org/t/p/w500";
+const URL_PATH = "https://api.themoviedb.org/3";
 
 //Get the API key from .env file
 const API_KEY = process.env.SECRET_API;
 
-
 // Getting the movie data from API
 const getMovieData = async () => {
-    const response = await fetch(`${URL_PATH}movie/now_playing?api_key=${API_KEY}&language=en-US&page=1`);
+    const response = await fetch(`${URL_PATH}/movie/now_playing?api_key=${API_KEY}&language=en-US&page=1`);
     const data = await response.json();
     movieData = data.results;
+    console.log(movieData);
 }
 
 // List the first 20 movies
 const listMovieData = () => {
     let movieList = movieData.slice(0, 20);
     movieList.forEach((movie) => {
-        movieBackgroundImage.src = `${URL_PATH}${movie.backdrop_path}`;
+        document.getElementById("now-playing-img").src = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
         movieTitle.innerHTML = movie.title;
         movieGenre.innerHTML = movie.genre_ids;
         movieRelease.innerHTML = movie.release_date;
@@ -118,6 +117,14 @@ const listSearchResultData = () => {
     });
 }
 
+// Display movie data
+function displayMovieData() {
+    getMovieData()
+        .then(() => {
+            listMovieData();
+        });
+}
+
 // Search button
 const searchButton = document.getElementById("search-button");
 searchButton.addEventListener("click", () => {
@@ -127,8 +134,7 @@ searchButton.addEventListener("click", () => {
 
 // Initialize the functions
 function init() {
-    getMovieData();
-    listMovieData();
+    displayMovieData();
     getTvShowData();
     listTvShowData();
     getNewReleaseData();
