@@ -1,0 +1,60 @@
+Run the latest Python
+|________________________________________________________________________________________________________________|
+|Installing and configuring Tailwind CSS on Django                                                               |
+|________________________________________________________________________________________________________________|
+|1. pip install Django                                                                                           |
+|2. python -m pip install django-tailwind # install tailwind                                                     |
+|3. in the settings.py under the INSTALLED_APPS add 'tailwind'                                                   |
+|4. python manage.py tailwind init # create tailwind css                                                         |
+|5. in the INSTALLED_APPS add 'theme'                                                                            |
+|6. in the settings.py add TAILWIND_APP_NAME = 'theme'                                                           |
+|7. in the settings.py under the INTERNAL_IPS add '127.0.0.1' *maybe*                                            |
+|8. app/templates/base.html add {% load tailwind_tags %} ... <head> ... {% tailwind_css %} ... </head>           |
+|9. in the settings.py under the INSTALLED_APPS add 'django_browser_reload'                                      |
+|10. in the settings.py under the MIDDLEWARE add 'django_browser_reload.middleware.BrowserReloadMiddleware'      |
+|11. in the url.py from django.urls import include, path                                                         |
+|urlpatterns = [                                                                                                 |
+|    ...,                                                                                                        |
+|    path("__reload__/", include("django_browser_reload.urls")),                                                 |
+|]                                                                                                               |
+|12. python manage.py tailwind start # start the development server                                              |
+|                                                                                                                |
+|________________________________________________________________________________________________________________|
+|_____________________________________________________________________________________|
+|     Configure the content section of in the theme/static_src/tailwind.config.js     |
+|_____________________________________________________________________________________|
+|module.exports = {                                                                   |
+|    content: [                                                                       |
+|        // Templates within theme app (e.g. base.html)                               |
+|        '../templates/**/*.html',                                                    |
+|        // Templates in other apps                                                   |
+|        '../../templates/**/*.html',                                                 |
+|        // Ignore files in node_modules                                              |
+|        '!../../**/node_modules',                                                    |
+|        // Include JavaScript files that might contain Tailwind CSS classes          |
+|        '../../**/*.js',                                                             |
+|        // Include Python files that might contain Tailwind CSS classes              |
+|        '../../**/*.py'                                                              |
+|    ],                                                                               |
+|    ...                                                                              |
+|}                                                                                    |
+|_____________________________________________________________________________________|
+|_____________________________________________________________________|            |
+|                     Configure Node.js on Django                     |            |
+|_____________________________________________________________________|            |
+| In the settings.py add NPM_BIN_PATH = r"C:\PATH_TO\nodejs\npm.cmd"  |            |
+|_____________________________________________________________________|            |
+|_____________________________________________________________________|____________|
+|                               Setting up .env file                               |
+|__________________________________________________________________________________|
+|1. pip install python-dotenv                                                      |
+|2. from dotenv import load_dotenv                                                 |
+|3. load_dotenv()  # take environment variables from .env                          |
+|4. add a .env in the root directory of your project                               |
+|5. # Development settings                                                         |
+|   the syntax of .env files supported by python-dotenv is similar to that of Bash:|
+|   DOMAIN=example.org                                                             |
+|   ADMIN_EMAIL=admin@${DOMAIN}                                                    |
+|   ROOT_URL=${DOMAIN}/app                                                         |
+|6. create .gitignore in root to add .env                                          |
+|__________________________________________________________________________________|
