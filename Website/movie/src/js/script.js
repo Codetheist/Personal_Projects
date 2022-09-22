@@ -61,5 +61,27 @@ const displayNowPlayingMovies = async () => {
     movieTime.innerHTML = movieData[0].runtime;
 };
 
-displayNowPlayingMovies();
+// Function to show more or less of the description
+function displayText() {
+    let ellipsis = document.getElementById("ellipsis");
+    let moreText = document.getElementById("more");
+    let displayButton = document.getElementById("toggle-button");
 
+    if(ellipsis.classList.contains("hidden")) {
+        ellipsis.classList.remove("hidden");
+        moreText.classList.add("hidden");
+        displayButton.innerHTML = "Read more";
+    } else {
+        ellipsis.classList.add("hidden");
+        moreText.classList.remove("hidden");
+        displayButton.innerHTML = "Read less";
+    }
+}
+
+// Initialize script
+function init() {
+    displayNowPlayingMovies();
+    displayText();
+}
+
+init();
