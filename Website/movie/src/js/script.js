@@ -1,15 +1,14 @@
-
-// dotenv
 require('dotenv').config();
 
 // Getting ID elements
 
 // Movie
-let movieBackgroundImage = document.getElementById("now-playing-img");
+let moviePoster = document.getElementById("now-playing-img");
 let movieTitle = document.getElementById("title");
-let movieGenre = document.getElementById("genre");
+let movieDescription = document.getElementById("genre");
 let movieRelease = document.getElementById("release-date");
 let movieTime = document.getElementById("time");
+let movieGenre = document.getElementById("genre");
 
 // TV Show
 let tvBackgroundImage = document.getElementById("background-img");
@@ -35,31 +34,69 @@ let movieData = [];
 let newReleaseData = [];
 let searchResultData = [];
 
+// Maximum limit
+const MAX_MOVIE_LIMIT = 20;
+const MAX_TVSHOW_LIMIT = 20;
+const MAX_NEW_RELEASE_LIMIT = 20;
+
 // API path
 const URL_PATH = "https://api.themoviedb.org/3";
 
 //Get the API key from .env file
-const API_KEY = process.env.SECRET_API;
+const TMDB_SECRET_API = process.env.SECRET_API;
 
 // Get a list of now playing movies
-const getNowPlayingMovies = async () => {
-    const response = await fetch(
-        `${URL_PATH}/movie/now_playing?api_key=${API_KEY}&language=en-US&page=1`
-    );
-    const data = await response.json();
-    return data;
-};
+function displayNowPlayingMovies() {
+    let url = URL_PATH + "/movie/upcoming?api_key=" + TMDB_SECRET_API + "&language=en-US&page=1";
+    fetch(url)
+        .then((response) => response.json())
+        .then((data) => {
+            movieData = data.results;
+            displayMovieData();
+        });
+}
 
 // Display now playing movies
-const displayNowPlayingMovies = async () => {
-    const data = await getNowPlayingMovies();
-    movieData = data.results;
-    movieBackgroundImage.src = `url(https://image.tmdb.org/t/p/original${movieData[0].backdrop_path})`;
-    movieTitle.innerHTML = movieData[0].title;
-    movieGenre.innerHTML = movieData[0].genre_ids;
-    movieRelease.innerHTML = movieData[0].release_date;
-    movieTime.innerHTML = movieData[0].runtime;
-};
+function displayMovieData() {
+    
+    // Format the release date to MM/DD/YYYY
+    let date = new Date(movieData[0].release_date);
+    let month = date.getMonth() + 1;
+    let day = date.getDate();
+    let year = date.getFullYear();
+    movieRelease.innerHTML = month + "/" + day + "/" + year;
+    
+    // Use the data more details from the first movie
+    let movieId = movieData[0].id;
+    let url = URL_PATH + "/movie/" + movieId + "?api_key=" + TMDB_SECRET_API + "&language=en-US";
+    fetch(url)
+        .then((response) => response.json())
+        .then((data) => {
+            movieTime.innerHTML = data.runtime + " minutes";
+            movieGenre.innerHTML = data.genres[0].name;
+        });
+
+    // Loop through the movie data
+    for (let i = 0; i < MAX_MOVIE_LIMIT; i++) {
+        // Get the movie title
+        let title = movieData[i].title;
+        // Get the movie genre
+        let description = movieData[i].overview;
+        // Get the movie release date
+        let releaseDate = movieData[i].release_date;
+        // Get the movie time
+        let time = movieData[i].runtime;
+        // Get the movie background image
+        let backgroundImage = movieData[i].poster_path;
+
+        // Display the movie data
+        moviePoster.src = "https://image.tmdb.org/t/p/original" + backgroundImage;
+        movieTitle.innerHTML = title;
+        movieDescription.innerHTML = description;
+        movieRelease.innerHTML = releaseDate;
+        movieTime.innerHTML = time + " minutes";
+    }
+}
 
 // Function to show more or less of the description
 function displayText() {
@@ -81,7 +118,7 @@ function displayText() {
 // Initialize script
 function init() {
     displayNowPlayingMovies();
-    displayText();
+    //displayText();
 }
 
 init();
