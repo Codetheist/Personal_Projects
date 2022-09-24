@@ -43,7 +43,7 @@ const MAX_NEW_RELEASE_LIMIT = 20;
 const URL_PATH = "https://api.themoviedb.org/3";
 
 //Get the API key from .env file
-const TMDB_SECRET_API = process.env.SECRET_API;
+const TMDB_SECRET_API = process.env.TMDB_SECRET_KEY;
 console.log(TMDB_SECRET_API);
 
 // Get a list of now playing movies
