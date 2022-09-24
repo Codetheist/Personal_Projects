@@ -99,26 +99,37 @@ function displayMovieData() {
 }
 
 // Function to show more or less of the description
-function displayText() {
-    let ellipsis = document.getElementById("ellipsis");
-    let moreText = document.getElementById("more");
-    let displayButton = document.getElementById("toggle-button");
+function readMore() {
+    
+    // Having more than one read more button
+    let readMoreBtn = document.querySelectorAll(".toggle-button");
+    let readMoreText = document.querySelectorAll(".more");
+    let readMoreTextLength = readMoreText.length;
 
-    if(ellipsis.classList.contains("hidden")) {
-        ellipsis.classList.remove("hidden");
-        moreText.classList.add("hidden");
-        displayButton.innerHTML = "Read more";
-    } else {
-        ellipsis.classList.add("hidden");
-        moreText.classList.remove("hidden");
-        displayButton.innerHTML = "Read less";
+    // Loop through the read more button
+    for (let i = 0; i < readMoreTextLength; i++) {
+        // If the read more button is clicked
+        readMoreBtn[i].addEventListener("click", function() {
+            // If the read more button is clicked
+            if (readMoreBtn[i].innerHTML === "Read more") {
+                // Show the full description
+                readMoreText[i].style.display = "inline";
+                // Change the read more button to read less
+                readMoreBtn[i].innerHTML = "Read less";
+            } else {
+                // Show the full description
+                readMoreText[i].style.display = "none";
+                // Change the read more button to read less
+                readMoreBtn[i].innerHTML = "Read more";
+            }
+        });
     }
 }
 
 // Initialize script
 function init() {
     displayNowPlayingMovies();
-    //displayText();
+    readMore();
 }
 
 init();
