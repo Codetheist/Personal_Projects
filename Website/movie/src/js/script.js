@@ -1,4 +1,4 @@
-require('dotenv').config();
+require('dotenv').config()
 
 // Getting ID elements
 
@@ -44,6 +44,7 @@ const URL_PATH = "https://api.themoviedb.org/3";
 
 //Get the API key from .env file
 const TMDB_SECRET_API = process.env.SECRET_API;
+console.log(TMDB_SECRET_API);
 
 // Get a list of now playing movies
 function displayNowPlayingMovies() {
