@@ -44,7 +44,6 @@ const URL_PATH = "https://api.themoviedb.org/3";
 
 //Get the API key from .env file
 const TMDB_SECRET_API = process.env.TMDB_SECRET_KEY;
-console.log(TMDB_SECRET_API);
 
 // Get a list of now playing movies
 function displayNowPlayingMovies() {
@@ -59,14 +58,14 @@ function displayNowPlayingMovies() {
 
 // Display now playing movies
 function displayMovieData() {
-    
+
     // Format the release date to MM/DD/YYYY
     let date = new Date(movieData[0].release_date);
     let month = date.getMonth() + 1;
     let day = date.getDate();
     let year = date.getFullYear();
     movieRelease.innerHTML = month + "/" + day + "/" + year;
-    
+
     // Use the data more details from the first movie
     let movieId = movieData[0].id;
     let url = URL_PATH + "/movie/" + movieId + "?api_key=" + TMDB_SECRET_API + "&language=en-US";
@@ -101,7 +100,7 @@ function displayMovieData() {
 
 // Function to show more or less of the description
 function readMore() {
-    
+
     // Having more than one read more button
     let readMoreBtn = document.querySelectorAll(".toggle-button");
     let readMoreText = document.querySelectorAll(".more");
@@ -110,7 +109,7 @@ function readMore() {
     // Loop through the read more button
     for (let i = 0; i < readMoreTextLength; i++) {
         // If the read more button is clicked
-        readMoreBtn[i].addEventListener("click", function() {
+        readMoreBtn[i].addEventListener("click", function () {
             // If the read more button is clicked
             if (readMoreBtn[i].innerHTML === "Read more") {
                 // Show the full description
