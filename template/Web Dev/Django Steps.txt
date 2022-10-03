@@ -1,9 +1,11 @@
-Run the latest Python
+|_____________________|
+|Run the latest Python|
+|_____________________|
 |_______________________________________________________________________________________________________________|
 |                               Installing and configuring Tailwind CSS on Django                               |
 |_______________________________________________________________________________________________________________|
-|1. pip3 install Django                                                                                          |
-|2. python -m pip3 install django-tailwind # install tailwind                                                    |
+|1. pip3 install Django                                                                                         |
+|2. python -m pip3 install django-tailwind # install tailwind                                                   |
 |3. in the settings.py under the INSTALLED_APPS add 'tailwind'                                                  |
 |4. python manage.py tailwind init # create tailwind css                                                        |
 |5. in the INSTALLED_APPS add 'theme'                                                                           |
@@ -47,7 +49,7 @@ Run the latest Python
 |_____________________________________________________________________|____________|
 |                               Setting up .env file                               |
 |__________________________________________________________________________________|
-|1. pip3 install python-dotenv                                                      |
+|1. pip3 install python-dotenv                                                     |
 |2. from dotenv import load_dotenv                                                 |
 |3. load_dotenv()  # take environment variables from .env                          |
 |4. add a .env in the root directory of your project                               |
@@ -65,4 +67,37 @@ Run the latest Python
 |2. django-admin startproject myproject . # to create a new project    |
 |3. python manage.py startapp myapp # to create a new app              |
 |4. python manage.py runserver # to run the server                     |
+|______________________________________________________________________|
+|																	   |
+|                   Django and Vue3 Folder structure                   |
+|______________________________________________________________________|
+|my_project/														   |
+|																	   |
+|____ core/															   |
+|    |____ __init__.py												   |
+|    |____ views.py           # class based TemplateView for index.html|
+|    																   |
+|																	   |
+|____ frontend/               # root frontend						   |
+|    |____ src/               # vue components, router, store, etc.	   |
+|    |____ node_modules/											   |
+|    |____ vue.config.js      # important file number 1				   |
+|    |____ webpack-stats.json # important file number 2				   |
+|																	   |
+|																	   |
+|____ my_project/             # root backend						   |
+|    |____ __init__.py												   |
+|    |____ settings.py												   |
+|    |____ urls.py													   |
+|    |____ views.py													   |
+|																	   |
+|																	   |
+|____ templates/                									   |
+|    |____ index.html         # django template that houses vue		   |
+|																	   |
+|____ .gitignore													   |
+|____ venv/															   |
+|____ requirements.txt												   |
+|____ manage.py														   |
+|____ db.sqlite3													   |
 |______________________________________________________________________|
