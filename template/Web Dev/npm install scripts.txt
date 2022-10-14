@@ -7,3 +7,12 @@ npm install @tailwindcss/typography @tailwindcss/forms @tailwindcss/line-clamp @
 
 npx tailwindcss -i ./src/input.css -o ./dist/output.css --watch
 npx tailwindcss -i ./src/input.css -o ./dist/output.css --minify /*Used for production*/
+
+
+Vue install
+1. Create project
+    npm create vite@latest my-project -- --template vue
+    cd my-project
+2. Install Tailwind CSS
+    npm install -D tailwindcss postcss autoprefixer
+    npx tailwindcss init -p
