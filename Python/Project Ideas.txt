@@ -1,0 +1,76 @@
+Project Ideas
+------------------------------------------------------------
+Python
+Mad Libs
+Guess the Number Game (Computer)
+Guess the Number Game (User)
+Rock, Paper, Scissors
+Hangman
+Countdown Timer
+Password Generator
+QR Code Encoder / Decoder
+Tic-Tac-Toe
+Tic-Tac-Toe AI
+Binary Search
+Minesweeper
+Sudoku Solver
+Photo Manipulation in Python
+Markov Chain Text Composer
+Pong
+Snake
+Connect Four
+Tetris
+Online Multiplayer Game
+Web Scraping Program
+Bulk File Renamer
+Weather Program
+Code A Discord Bot with Python - Host for Free in The Cloud
+Space Invaders Game
+------------------------------------------------------------
+Top Python Projects for Beginners
+1. Email Slicer
+2. Number to Words
+3. Google Image downloader
+4. Contact List
+5. Monty Hall Simulation Problem
+6. Image to Sound
+7. Snake Game
+8. GIF Creator
+9. Website Blocker
+10. Binary Search Algorithm
+11. Dice Rolling Simulator
+Top Python Project Ideas for Intermediate
+1. Image to Story
+2. Number Guessing
+3. Fibonacci Generator
+4. Voice Assistant
+    Modules needed for this project:
+    Subprocesses:-Module for getting details of system subprocesses that are used by various commands such as shutdown, sleep, etc. Python includes this module by default. 
+    WolframAlpha:- Based on Wolfram’s algorithms, knowledgebase, and AI technology, WolframAlpha is used to compute expert-level answers. 
+    Pyttsx3:- This module converts text to speech in a program and works offline. 
+    Tkinter:- This module is used for building GUI and comes inbuilt with Python.  
+    Wikipedia:– As we all know Wikipedia is a great source of knowledge just like IntervewBit. We use the Wikipedia module to access information from Wikipedia or to search Wikipedia. 
+    Speech Recognition:- In building an application for voice assistant, one of the most important things is that the assistant recognizes your voice (meaning what you want to ask). 
+    Web browser:- This built-in module is used for web search.
+    Ecapture:- This module is used for capturing images from your camera.
+    Pyjokes:- Pyjokes is a tool for collecting Python jokes online. 
+    Datetime:- Shows date and time
+    Twilio:- Twilio is used for making calls and sending messages.
+    Requests: Requests are used to make GET and POST requests. 
+    BeautifulSoup: The Beautiful Soup library allows you to easily scrape information from web pages.
+5. Password Generator
+6. Reddit Bot
+7. Black Jack
+8. Recursive Triangle
+9. Queue
+10. Rock Paper Scissors Game
+11. Currency Converter
+Real-time Exchange rates: Get API from https://www.exchangerate-api.com/
+12. Quiz Application
+Top Python Project Ideas for Advanced Users
+1. Content Aggregator
+2. Building Chatbot
+3. Face Mask Detection
+4. Plagiarism Checker
+5. Music Player
+------------------------------------------------------------
