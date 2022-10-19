@@ -2,13 +2,14 @@
 import { ref } from 'vue'
 
 defineProps({
-    msg: String
+    msg: String,
+    title: String
 })
 
-const count = ref(0)
 </script>
 
 <template>
+    <title>{{ title }}</title>
     <header>
         <div class="text-center bg-gray-50 text-gray-800 py-20 px-6">
             <h1 class="text-2xl font-bold text-center">{{ msg }}</h1>
