@@ -1,0 +1,460 @@
+<script setup>
+import { ref } from 'vue'
+
+defineProps({
+    msg: String
+})
+
+const count = ref(0)
+</script>
+
+<template>
+    <header>
+        <div class="text-center bg-gray-50 text-gray-800 py-20 px-6">
+            <h1 class="text-2xl font-bold text-center">{{ msg }}</h1>
+        </div>
+    </header>
+
+
+    <!--Main Content-->
+    <section class="flex flex-col items-center justify-center">
+        <div class="text-center text-gray-800 py-20 px-6">
+            <h1 class="text-2xl font-bold text-center">Movies</h1>
+        </div>
+        
+        <!--Cards-->
+        <div class="grid grid-cols-4 gap-4 py-5">
+            <!--Card 1-->
+            <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                <img class="w-full" src="https://image.tmdb.org/t/p/original/20kLFPdms1r7VQbZGuaQL8YTKh.jpg" alt="The Man from Toronto">
+                <div class="px-6 py-4">
+                    <div class="font-bold text-xl mb-2">The Man from Toronto</div>
+                    <p class="text-gray-700 text-base">
+                        In a case of mistaken identity, the world's deadliest assassin, known as the Man from Toronto, and a New York City screw-up are forced to team up after being confused for each other at a rental cabin.
+                    </p>
+                </div>
+            </div>
+    
+            <!--Card 2-->
+            <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                <img class="w-full" src="https://image.tmdb.org/t/p/original/gCHTQiBGAd7ovWrOKfyJrJTXtah.jpg" alt="Wrath of Man">
+                <div class="px-6 py-4">
+                <div class="font-bold text-xl mb-2">Wrath of Man</div>
+                <p class="text-gray-700 text-base">
+                    A cold and mysterious new security guard for a Los Angeles cash truck company surprises his co-workers when he unleashes precision skills during a heist.
+                    The crew is left wondering who he is and where he came from.
+                    <span class="more hidden">
+                    Soon, the marksman's ultimate motive becomes clear as he takes dramatic and irrevocable steps to settle a score.
+                    </span>
+                    <button onclick="displayText()" class="text-blue-500 font-bold toggle-button">Read more</button>
+                </p>
+                </div>
+            </div>
+
+            <!--Card 3-->
+            <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                <img class="w-full" src="https://image.tmdb.org/t/p/w500/l6z4HkCtjIxdEHjj9nCKOta8Idw.jpg" alt="Red Notice">
+                <div class="px-6 py-4">
+                    <div class="font-bold text-xl mb-2">Red Notice</div>
+                    <p class="text-gray-700 text-base">
+                        An Interpol-issued Red Notice is a global alert to hunt and capture the world's most wanted. But when a daring heist brings together the FBI's top profiler and two rival criminals, there's no telling what will happen.
+                    </p>
+                </div>
+            </div>
+
+            <!--Card 4-->
+            <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                <img class="w-full" src="https://www.themoviedb.org/t/p/original/n1CoXXqNpLqihIRucVuKZp1FK70.jpg" alt="Taken">
+                <div class="px-6 py-4">
+                    <div class="font-bold text-xl mb-2">Taken</div>
+                    <p class="text-gray-700 text-base">
+                        While vacationing with a friend in Paris, an American girl is kidnapped by a gang of human traffickers intent on selling her into forced prostitution.
+                        <span class="more hidden">
+                            Working against the clock, her ex-spy father must pull out all the stops to save her. But with his best years possibly behind him, the job may be more than he can handle.
+                        </span>
+                        <button onclick="displayText()" class="text-blue-500 font-bold toggle-button">Read more</button>
+                    </p>
+                </div>
+            </div>
+
+            <!--Card 5-->
+            <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                <img class="w-full" src="https://www.themoviedb.org/t/p/original/fSRb7vyIP8rQpL0I47P3qUsEKX3.jpg" alt="Deadpool">
+                <div class="px-6 py-4">
+                    <div class="font-bold text-xl mb-2">Deadpool</div>
+                    <p class="text-gray-700 text-base">
+                        The origin story of former Special Forces operative turned mercenary Wade Wilson, who, after being subjected to a rogue experiment that leaves him with accelerated healing powers, adopts the alter ego Deadpool.
+                        <span class="more hidden">
+                            Armed with his new abilities and a dark, twisted sense of humor, Deadpool hunts down the man who nearly destroyed his life.
+                        </span>
+                        <button onclick="displayText()" class="text-blue-500 font-bold toggle-button">Read more</button>
+                    </p>
+                </div>
+            </div>
+
+            <!--Card 6-->
+            <div class="max-w-sm rounded overflow-hidden shadow-lg" id="personal">
+                <img class="w-full" src="https://www.themoviedb.org/t/p/original/7DyuV2G0hLEqHeueDfOqhZ2DVut.jpg" alt="Hancock">
+                <div class="px-6 py-4">
+                <div class="font-bold text-xl mb-2">Hancock</div>
+                <p class="text-gray-700 text-base">
+                    Hancock is a down-and-out superhero who's forced to employ a PR expert to help repair his image when the public grows weary of all the damage he's inflicted during his lifesaving heroics.
+                    <span class="more hidden">
+                    The agent's idea of imprisoning the antihero to make the world miss him proves successful, but will Hancock stick to his new sense of purpose or slip back into old habits?
+                    </span>
+                    <button onclick="displayText()" class="text-blue-500 font-bold toggle-button">Read more</button>
+                </p>
+                </div>
+            </div>
+
+            <!--Card 7-->
+            <div class="max-w-sm rounded overflow-hidden shadow-lg" id="personal">
+                <img class="w-full" src="https://www.themoviedb.org/t/p/original/zsnQ41UZ3jo1wEeemF0eA9cAIU0.jpg" alt="Underworld">
+                <div class="px-6 py-4">
+                    <div class="font-bold text-xl mb-2">Underworld</div>
+                    <p class="text-gray-700 text-base">
+                        Vampires and werewolves have waged a nocturnal war against each other for centuries. But all bets are off when a female vampire warrior named Selene, who's famous for her strength and werewolf-hunting prowess, becomes smitten with a peace-loving male werewolf, Michael, who wants to end the war.
+                    </p>
+                </div>
+            </div>
+
+            <!--Card 8-->
+            <div class="max-w-sm rounded overflow-hidden shadow-lg" id="personal">
+                <img class="w-full" src="https://www.themoviedb.org/t/p/original/7Ou0TRJLi72AwLEUlo7Kym4XuNB.jpg" alt="Central Intelligence">
+                <div class="px-6 py-4">
+                    <div class="font-bold text-xl mb-2">Central Intelligence</div>
+                    <p class="text-gray-700 text-base">
+                        After he reunites with an old pal through Facebook, a mild-mannered accountant is lured into the world of international espionage.
+                    </p>
+                </div>
+                </div>
+            </div>
+    </section>
+    
+    <!--Sub Content-->
+    <section class="flex flex-col items-center justify-center">
+        <div class="text-center text-gray-800 py-20 px-6">
+            <h1 class="text-2xl font-bold text-center">TV Shows</h1>
+        </div>
+        
+        <!--TV Card-->
+        <div class="grid grid-cols-3 gap-4 py-5">
+            <!--Card 1-->
+            <div class="max-w-sm rounded overflow-hidden shadow-lg" id="personal">
+                <img class="w-full" src="https://www.themoviedb.org/t/p/original/ekZobS8isE6mA53RAiGDG93hBxL.jpg" alt="Lucifer">
+                <div class="px-6 py-4">
+                    <div class="font-bold text-xl mb-2">Lucifer</div>
+                    <p class="text-gray-700 text-base">
+                        Bored and unhappy as the Lord of Hell, Lucifer Morningstar abandoned his throne and retired to Los Angeles, where he has teamed up with LAPD detective Chloe Decker to take down criminals. But the longer he's away from the underworld, the greater the threat that the worst of humanity could escape.
+                    </p>
+                </div>
+            </div>
+
+            <!--Card 2-->
+            <div class="max-w-sm rounded overflow-hidden  shadow-lg" id="personal">
+                <img class="w-full" src="https://www.themoviedb.org/t/p/original/uaX1T7iyDy3L4qdlvzbt4QH1LMU.jpg" alt="Criminal Minds">
+                <div class="px-6 py-4">
+                    <div class="font-bold text-xl mb-2">Criminal Minds</div>
+                    <p class="text-gray-700 text-base">
+                        An elite team of FBI profilers analyze the country's most twisted criminal minds, anticipating their next moves before they strike again. The Behavioral Analysis Unit's most experienced agent is David Rossi, a founding member of the BAU who returns to help the team solve new cases.
+                    </p>
+                </div>
+            </div>
+
+            <!--Card 3-->
+            <div class="max-w-sm rounded overflow-hidden  shadow-lg" id="personal">
+                <img class="w-full" src="https://www.themoviedb.org/t/p/original/lkvhReTBZ2Ksl0Dl5Oplsf6UYkF.jpg" alt="House">
+                <div class="px-6 py-4">
+                    <div class="font-bold text-xl mb-2">House</div>
+                    <p class="text-gray-700 text-base">
+                        Dr. Gregory House, a drug-addicted, unconventional, misanthropic medical genius, leads a team of diagnosticians at the fictional Princeton-Plainsboro Teaching Hospital in New Jersey.
+                    </p>
+                </div>
+            </div>
+
+            <!--Card 4-->
+            <div class="max-w-sm rounded overflow-hidden  shadow-lg" id="personal">
+                <img class="w-full" src="https://www.themoviedb.org/t/p/original/hgRMSOt7a1b8qyQR68vUixJPang.jpg" alt="Brooklyn Nine-Nine">
+                <div class="px-6 py-4">
+                    <div class="font-bold text-xl mb-2">Brooklyn Nine-Nine</div>
+                    <p class="text-gray-700 text-base">
+                        A single-camera ensemble comedy following the lives of an eclectic group of detectives in a New York precinct, including one slacker who is forced to shape up when he gets a new boss.
+                    </p>
+                </div>
+            </div>
+
+            <!--Card 5-->
+            <div class="max-w-sm rounded overflow-hidden  shadow-lg" id="personal">
+                <img class="w-full" src="https://www.themoviedb.org/t/p/original/maBJkaBM4UqAttn9UkLCfZEVEfk.jpg" alt="Superstore">
+                <div class="px-6 py-4">
+                    <div class="font-bold text-xl mb-2">Superstore</div>
+                    <p class="text-gray-700 text-base">
+                        A hilarious workplace comedy about a unique family of employees at a super-sized mega store. From the bright-eyed newbies and the seen-it-all veterans to the clueless summer hires and the in-it-for-life managers, together they hilariously tackle the day-to-day grind of rabid bargain hunters, riot-causing sales and nap-worthy training sessions.
+                    </p>
+                </div>
+            </div>
+
+            <!--Card 6-->
+            <div class="max-w-sm rounded overflow-hidden  shadow-lg" id="personal">
+                <img class="w-full" src="https://www.themoviedb.org/t/p/original/53P8oHo9cfOsgb1cLxBi4pFY0ja.jpg" alt="The Good Doctor">
+                <div class="px-6 py-4">
+                    <div class="font-bold text-xl mb-2">The Good Doctor</div>
+                    <p class="text-gray-700 text-base">
+                        Shaun Murphy, a young surgeon with autism and savant syndrome, relocates from a quiet country life to join a prestigious hospital's surgical unit. Unable to personally connect with those around him, Shaun uses his extraordinary medical gifts to save lives and challenge the skepticism of his colleagues.
+                    </p>
+                </div>
+            </div>
+
+            <!--Card 7-->
+            <div class="max-w-sm rounded overflow-hidden  shadow-lg" id="personal">
+                <img class="w-full" src="https://www.themoviedb.org/t/p/original/cvhNj9eoRBe5SxjCbQTkh05UP5K.jpg" alt="Rick and Morty">
+                <div class="px-6 py-4">
+                    <div class="font-bold text-xl mb-2">Rick and Morty</div>
+                    <p class="text-gray-700 text-base">
+                        Rick is a mentally-unbalanced but scientifically gifted old man who has recently reconnected with his family. He spends most of his time involving his young grandson Morty in dangerous, 
+                        <span class="more hidden">
+                            outlandish adventures throughout space and alternate universes. Compounded with Morty's already unstable family life, these events cause Morty much distress at home and school.
+                        </span>
+                        <button onclick="displayText()" class="text-blue-500 font-bold toggle-button">Read more</button>
+                    </p>
+                </div>
+            </div>
+
+            <!--Card 8-->
+            <div class="max-w-sm rounded overflow-hidden  shadow-lg" id="personal">
+                <img class="w-full" src="https://www.themoviedb.org/t/p/original/kr55EFlgEdg1VqWBmDOFPPPgQXa.jpg" alt="Archer">
+                <div class="px-6 py-4">
+                    <div class="font-bold text-xl mb-2">Archer</div>
+                    <p class="text-gray-700 text-base">
+                        Sterling Archer is the world's most daunting spy. He works for ISIS, a spy agency run by his mother. In between dealing with his boss and his co-workers - one of whom is his ex-girlfriend - Archer manages to annoy or seduce everyone that crosses his path. His antics are only excusable because at the end of the day, he still somehow always manages to thwart whatever crises was threatening mankind.
+                    </p>
+                </div>
+            </div>
+
+            <!--Card 9-->
+            <div class="max-w-sm rounded overflow-hidden  shadow-lg" id="personal">
+                <img class="w-full" src="https://www.themoviedb.org/t/p/original/7DCq6XbJx5WGKPvSMBxYK9uJQWQ.jpg" alt="Teen Titans">
+                <div class="px-6 py-4">
+                    <div class="font-bold text-xl mb-2">Teen Titans</div>
+                    <p class="text-gray-700 text-base">
+                        The Teen Titans are five heroes under one roof. Their names: Robin, Starfire, Raven, Cyborg, and Beast Boy They live in a large tower in the shape of a T that they call Titan Tower. 
+                        <span class="more hidden">
+                            No secret identities. No school. Just superheroes being superheroes. They must go up against their arch nemesis, Slade, and his evil minions. What he really plans to do is unknown but one thing's for sure... he's an evil madman.
+                        </span>
+                        <button onclick="displayText()" class="text-blue-500 font-bold toggle-button">Read more</button>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!--Anime Card-->
+        <div class="text-center text-gray-800 py-20 px-6">
+            <h1 class="text-2xl font-bold text-center">Anime</h1>
+        </div>
+
+        <!--Anime Card-->
+        <div class="grid grid-cols-4 gap-4 py-5">
+            <!--Card 1-->
+            <div class="max-w-sm rounded overflow-hidden  shadow-lg" id="personal">
+                <img class="w-full" src="https://www.themoviedb.org/t/p/original/cHFZA8Tlv03nKTGXhLOYOLtqoSm.jpg" alt="Avatar: The Last Airbender">
+                <div class="px-6 py-4">
+                    <div class="font-bold text-xl mb-2">Avatar: The Last Airbender</div>
+                    <p class="text-gray-700 text-base">
+                        In a war-torn world of elemental magic, a young boy reawakens to undertake a dangerous mystic quest to fulfill his destiny as the Avatar, and bring peace to the world.
+                    </p>
+                </div>
+            </div>
+
+            <!--Card 2-->
+            <div class="max-w-sm rounded overflow-hidden  shadow-lg" id="personal">
+                <img class="w-full" src="https://www.themoviedb.org/t/p/original/vauCEnR7CiyBDzRCeElKkCaXIYu.jpg" alt="Naruto">
+                <div class="px-6 py-4">
+                    <div class="font-bold text-xl mb-2">Naruto</div>
+                    <p class="text-gray-700 text-base">
+                        In another world, ninja are the ultimate power, and in the Village Hidden in the Leaves live the stealthiest ninja in the land. 
+                        <span class="more hidden">
+                            Twelve years earlier, the fearsome Nine-Tailed Fox terrorized the village and claimed many lives before it was subdued and its spirit sealed within the body of a baby boy. That boy, Naruto Uzumaki, has grown up to become a ninja-in-training who's more interested in pranks than in studying ninjutsu.. but Naruto is determined to become the greatest ninja ever!
+                        </span>
+                        <button onclick="displayText()" class="text-blue-500 font-bold toggle-button">Read more</button>
+                    </p>
+                </div>
+            </div>
+
+            <!--Card 3-->
+            <div class="max-w-sm rounded overflow-hidden  shadow-lg" id="personal">
+                <img class="w-full" src="https://www.themoviedb.org/t/p/original/oPiNGGZyBzst3hKGFU1mteT0zhe.jpg" alt="High School of the Dead">
+                <div class="px-6 py-4">
+                    <div class="font-bold text-xl mb-2">High School of the Dead</div>
+                    <p class="text-gray-700 text-base">
+                        When the world is struck by a deadly pandemic that turns humans into zombies, Takashi Komuro and several of his classmates at Fujimi High School try to survive the apocalypse.
+                    </p>
+                </div>
+            </div>
+
+            <!--Card 4-->
+            <div class="max-w-sm rounded overflow-hidden  shadow-lg" id="personal">
+                <img class="w-full" src="https://www.themoviedb.org/t/p/original/nuGXXJMsinqGAva3niLI00x1h3K.jpg" alt="High School DxD">
+                <div class="px-6 py-4">
+                    <div class="font-bold text-xl mb-2">High School DxD</div>
+                    <p class="text-gray-700 text-base">
+                        The story follows Issei Hyōdō, a dim-witted, lecherous second-year high school student who is killed by a girl on his first date ever. 
+                        <span class="more hidden">
+                            Issei is reincarnated as a devil, and from that day forward, he serves as an underling of Riasu, a high-level devil who is also the prettiest girl on Issei's campus.
+                        </span>
+                        <button onclick="displayText()" class="text-blue-500 font-bold toggle-button">Read more</button>
+                    </p>
+                </div>
+            </div>
+
+            <!--Card 5-->
+            <div class="max-w-sm rounded overflow-hidden  shadow-lg" id="personal">
+                <img class="w-full" src="https://www.themoviedb.org/t/p/original/7bSQNQuhHeInFMfzMwevfCiqcTm.jpg" alt="Bleach">
+                <div class="px-6 py-4">
+                    <div class="font-bold text-xl mb-2">Bleach</div>
+                    <p class="text-gray-700 text-base">
+                        For as long as he can remember, Ichigo Kurosaki has been able to see ghosts. But when he meets Rukia, a Soul Reaper who battles evil spirits known as Hollows, he finds his life is changed forever. Now, with a newfound wealth of spiritual energy, Ichigo discovers his true calling: to protect the living and the dead from evil.
+                    </p>
+                </div>
+            </div>
+
+            <!--Card 6-->
+            <div class="max-w-sm rounded overflow-hidden  shadow-lg" id="personal">
+                <img class="w-full" src="https://www.themoviedb.org/t/p/original/rk2fTjYgpcN6LEALEO0aKTh9y9S.jpg" alt="Black Lagoon">
+                <div class="px-6 py-4">
+                    <div class="font-bold text-xl mb-2">Black Lagoon</div>
+                    <p class="text-gray-700 text-base">
+                        The story follows a team of pirate mercenaries known as the Lagoon Company, that smuggles goods in and around the seas of Southeast Asia in the early to mid 1990s. Their base of operations is located in the fictional harbor city of Roanapur in southeast Thailand near the border of Cambodia.
+                    </p>
+                </div>
+            </div>
+
+            <!--Card 7-->
+            <div class="max-w-sm rounded overflow-hidden  shadow-lg" id="personal">
+                <img class="w-full" src="https://www.themoviedb.org/t/p/original/wdbi0p7w2HTtv6Oh1wUAKRIsc0m.jpg" alt="School Days">
+                <div class="px-6 py-4">
+                    <div class="font-bold text-xl mb-2">School Days</div>
+                    <p class="text-gray-700 text-base">
+                        A rumor states that if you take a photo of someone you like with your cellphone and keep it hidden, they'll fall for you. Will Makoto win his love by taking a picture of Kotonoha without anyone knowing?
+                    </p>
+                </div>
+            </div>
+
+            <!--Card 8-->
+            <div class="max-w-sm rounded overflow-hidden  shadow-lg" id="personal">
+                <img class="w-full" src="https://www.themoviedb.org/t/p/original/3c5BIEfAhTCWrIi4C8WMuwOl6bX.jpg" alt="Akame ga Kill!">
+                <div class="px-6 py-4">
+                    <div class="font-bold text-xl mb-2">Akame ga Kill!</div>
+                    <p class="text-gray-700 text-base">
+                        With the Empire all but defeated, Esdeath still refuses to surrender and challenges Akame to a duel. With all of her attacks deflected, Akame is forced to unleash her Imperial Arm's trump-card by poisoning her own body with it, increasing her abilities and making a comeback to the point of wounding Esdeath's left arm.
+                        As a result, Esdeath cuts it off to prevent the poison from spreading through her body. 
+                        <span class="more hidden">
+                            With no time left to act, Akame puts all of her efforts into one final strike, forcing Esdeath to use her own Imperial Arm's trump-card to freeze time, which fails to prevent Akame from dealing her a fatal blow. With her last ounce of strength, Esdeath holds Tatsumi's body and freezes herself with it, which shatters both into pieces. Meanwhile, the prime minister is cornered by Leone and activates his own Imperial Arm to destroy hers, but even after shooting her several times, he fails to stop her from beating him to death. Knowing that her wounds are fatal, Leone bids farewell to Akame and dies alone in an alleyway after visiting her old drinking friends for one last time. The revolution finally ends with the Emperor sentenced to death, and before being executed, he asks Najenda to restore the country in his place. Meanwhile, Wave and Run pay respects to Kurome's grave and swear to help rebuild the nation as well. To soothe the public opinion, Akame accepts the blame for all of the crimes attributed to Night Raid and bids farewell to Najenda, leaving to parts unknown.
+                        </span>
+                        <button onclick="displayText()" class="text-blue-500 font-bold toggle-button">Read more</button>
+                        
+                    </p>
+                </div>
+            </div>
+
+            <!--Card 9-->
+            <div class="max-w-sm rounded overflow-hidden  shadow-lg" id="personal">
+                <img class="w-full" src="https://www.themoviedb.org/t/p/original/8DgRBL8eIMjBmkDYyWqiLnQ3vp8.jpg" alt="Nanbaka">
+                <div class="px-6 py-4">
+                    <div class="font-bold text-xl mb-2">Nanbaka</div>
+                    <p class="text-gray-700 text-base">
+                        Four men are assigned to the prison: Jūgo, a man who attempted to break out of prison and ended up extending his jail time; Uno, a man who likes to gamble with women; Rock, a man who likes to get into fights; and Nico, a man who likes anime.
+                    </p>
+                </div>
+            </div>
+
+            <!--Card 10-->
+            <div class="max-w-sm rounded overflow-hidden  shadow-lg" id="personal">
+                <img class="w-full" src="https://www.themoviedb.org/t/p/original/orHai1rrjIOVpSnzawWvlDYs6L.jpg" alt="Prison School">
+                <div class="px-6 py-4">
+                    <div class="font-bold text-xl mb-2">Prison School</div>
+                    <p class="text-gray-700 text-base">
+                        There was a time when the Hachimitsu Private Academy was a revered and elite all-girls' boarding school on the outskirts of Tokyo but a recent policy revision is allowing boys into the student body. 
+                        <span class="more hidden">
+                            On his first day, Kiyoshi Fujino discovers that he's one of only five boys enrolled at the school. Completely overwhelmed by the thousands of girls on campus, the few boys find that their situation is less than ideal.
+                        </span>
+                        <button onclick="displayText()" class="text-blue-500 font-bold toggle-button">Read more</button>
+                    </p>
+                </div>
+            </div>
+
+            <!--Card 11-->
+            <div class="max-w-sm rounded overflow-hidden  shadow-lg" id="personal">
+                <img class="w-full" src="https://www.themoviedb.org/t/p/original/oIrzzvEo8ceLtw4NXVxNDwBcvO1.jpg" alt="Juni Taisen: Zodiac War">
+                <div class="px-6 py-4">
+                    <div class="font-bold text-xl mb-2">Juni Taisen: Zodiac War</div>
+                    <p class="text-gray-700 text-base">
+                        Every 12 years, mercenaries with the highest caliber of brute strength, cunning wit, and deadly precision gather to participate in the Zodiac Tournament. Each warrior bears the name and attributes of one of the 12 animals of the Chinese zodiac. With their pride and lives on the line, they engage in vicious combat until only the victor remains.
+                    </p>
+                </div>
+            </div>
+
+            <!--Card 12-->
+            <div class="max-w-sm rounded overflow-hidden  shadow-lg" id="personal">
+                <img class="w-full" src="https://www.themoviedb.org/t/p/original/74OJEbRx1swuh5EuT7VNWxyWTZd.jpg" alt="Angels of Death">
+                <div class="px-6 py-4">
+                    <div class="font-bold text-xl mb-2">Angels of Death</div>
+                    <p class="text-gray-700 text-base">
+                        Most girls waking up without any memory and meeting a serial killer would panic, but not Rachel. In fact, far from being her biggest problem, killer Zack might just prove a convenient resource when it comes to finding a way out of the building in which they're both trapped!
+                    </p>
+                </div>
+            </div>
+
+            <!--Card 13-->
+            <div class="max-w-sm rounded overflow-hidden  shadow-lg" id="personal">
+                <img class="w-full" src="https://www.themoviedb.org/t/p/original/eeGRd3ENc9vetozwDDMhl9S7l3G.jpg" alt="7SEEDS">
+                <div class="px-6 py-4">
+                    <div class="font-bold text-xl mb-2">7SEEDS</div>
+                    <p class="text-gray-700 text-base">
+                        Shy Natsu awakens as part of a group chosen to ensure the survival of humanity. Together, they have to survive on a changed Earth.
+                    </p>
+                </div>
+            </div>
+
+            <!--Card 14-->
+            <div class="max-w-sm rounded overflow-hidden  shadow-lg" id="personal">
+                <img class="w-full" src="https://www.themoviedb.org/t/p/original/iHTSIrdMvaXM4eOFPo6SvAoxZZh.jpg" alt="Berserk">
+                <div class="px-6 py-4">
+                    <div class="font-bold text-xl mb-2">Berserk</div>
+                    <p class="text-gray-700 text-base">
+                        Guts, a man who calls himself "The Black Swordsman", looks back upon his days serving as a member of a group of mercenaries. Led by an ambitious, ruthless, and intelligent man named Griffith, together they battle their way into the royal court, and are forced into a fate that changes their lives.
+                    </p>
+                </div>
+            </div>
+
+            <!--Card 15-->
+            <div class="max-w-sm rounded overflow-hidden  shadow-lg" id="personal">
+                <img class="w-full" src="https://www.themoviedb.org/t/p/original/lQ4p6OF9KjagTfs8otZt0VTe3Al.jpg" alt="Rurouni Kenshin">
+                <div class="px-6 py-4">
+                    <div class="font-bold text-xl mb-2">Rurouni Kenshin</div>
+                    <p class="text-gray-700 text-base">
+                        The Meiji Era was one of great renewal for Japan, where swords and killing were outlawed. However, many survivors from the time of Revolution still live, 
+                        <span class="more hidden">
+                            lurking in the shadows and waiting for a chance to use their killing blades again. Only Kenshin Himura, formerly one of the most brutal of killers, hopes to keep his swordsman's honor and still live in the new era.
+                        </span>
+                        <button onclick="displayText()" class="text-blue-500 font-bold toggle-button">Read more</button>
+                    </p>
+                </div>
+            </div>
+
+            <!--Card 16-->
+            <div class="max-w-sm rounded overflow-hidden  shadow-lg" id="personal">
+                <img class="w-full" src="https://www.themoviedb.org/t/p/original/hxL3ZYeS1GYORKGHG9FI0l6QXQF.jpg" alt="Platinum End">
+                <div class="px-6 py-4">
+                    <div class="font-bold text-xl mb-2">Platinum End</div>
+                    <p class="text-gray-700 text-base">
+                        As his classmates celebrate their middle school graduation, troubled Mirai is mired in darkness. But his battle is just beginning when he receives some salvation from above in the form of an angel. 
+                        <span class="more hidden">
+                            Now Mirai is pitted against 12 other chosen humans in a battle in which the winner becomes the next god of the world. Mirai has an angel in his corner, but he may need to become a devil to survive.
+                        </span>
+                        <button onclick="displayText()" class="text-blue-500 font-bold toggle-button">Read more</button>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+</template>
