@@ -1,10 +1,10 @@
 <script setup>
 // This starter template is using Vue 3 < setup> SFCs
 // Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
-//import Helloworld from './components/Helloworld.vue'
+import Personal from './components/Personal.vue'
 import { ref } from 'vue'
 </script>
 
 <template>
-<!--<Helloworld msg="Vite + Vue" />-->
+    <Personal msg="Personal Favorite" />
 </template>
